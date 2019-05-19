@@ -12,12 +12,13 @@ namespace WHouse.Controllers
 {
     public class UserrsController : Controller
     {
-        private MydataEntities db = new MydataEntities();
+        private MydataEntities1 db = new MydataEntities1();
 
         // GET: Userrs
         public ActionResult Index()
         {
-            return View(db.Userrs.ToList());
+            var userrs = db.Userrs.Include(u => u.IsBusy1);
+            return View(userrs.ToList());
         }
 
         // GET: Userrs/Details/5
@@ -38,6 +39,7 @@ namespace WHouse.Controllers
         // GET: Userrs/Create
         public ActionResult Create()
         {
+            ViewBag.isBusy = new SelectList(db.IsBusies, "id_Busy", "name");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace WHouse.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,name,surname,phone,userType")] Userr userr)
+        public ActionResult Create([Bind(Include = "ID,name,surname,phone,userType,username,password,isBusy")] Userr userr)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace WHouse.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.isBusy = new SelectList(db.IsBusies, "id_Busy", "name", userr.isBusy);
             return View(userr);
         }
 
@@ -70,6 +73,7 @@ namespace WHouse.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.isBusy = new SelectList(db.IsBusies, "id_Busy", "name", userr.isBusy);
             return View(userr);
         }
 
@@ -78,7 +82,7 @@ namespace WHouse.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,name,surname,phone,userType")] Userr userr)
+        public ActionResult Edit([Bind(Include = "ID,name,surname,phone,userType,username,password,isBusy")] Userr userr)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace WHouse.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.isBusy = new SelectList(db.IsBusies, "id_Busy", "name", userr.isBusy);
             return View(userr);
         }
 

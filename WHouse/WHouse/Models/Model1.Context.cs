@@ -13,10 +13,10 @@ namespace WHouse.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MydataEntities : DbContext
+    public partial class MydataEntities1 : DbContext
     {
-        public MydataEntities()
-            : base("name=MydataEntities")
+        public MydataEntities1()
+            : base("name=MydataEntities1")
         {
         }
     
@@ -27,6 +27,7 @@ namespace WHouse.Models
     
         public virtual DbSet<CustumerOrder> CustumerOrders { get; set; }
         public virtual DbSet<Inventory> Inventories { get; set; }
+        public virtual DbSet<IsBusy> IsBusies { get; set; }
         public virtual DbSet<Job> Jobs { get; set; }
         public virtual DbSet<JobWorker> JobWorkers { get; set; }
         public virtual DbSet<OrderConfirm> OrderConfirms { get; set; }

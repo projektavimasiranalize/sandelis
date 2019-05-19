@@ -28,11 +28,11 @@ namespace WHouse.Models
         public int fk_UserID { get; set; }
     
         public virtual OrderConfirm OrderConfirm { get; set; }
+        public virtual Userr Userr { get; set; }
         public virtual Status Status1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderJob> OrderJobs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderProduct> OrderProducts { get; set; }
-        public virtual Userr Userr { get; set; }
     }
 }

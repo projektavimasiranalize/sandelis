@@ -10,10 +10,10 @@
     <Property Name="status" Type="Int32" />
     <Property Name="fk_UserID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="OrderConfirm" Relationship="Self.FK__CustumerO__confi__2D27B809" FromRole="CustumerOrder" ToRole="OrderConfirm" />
+    <NavigationProperty Name="Userr" Relationship="Self.FK__CustumerO__fk_Us__5CD6CB2B" FromRole="CustumerOrder" ToRole="Userr" />
     <NavigationProperty Name="Status1" Relationship="Self.FK__CustumerO__statu__2E1BDC42" FromRole="CustumerOrder" ToRole="Status" />
     <NavigationProperty Name="OrderJobs" Relationship="Self.FK__OrderJob__fk_Cus__3B75D760" FromRole="CustumerOrder" ToRole="OrderJob" />
     <NavigationProperty Name="OrderProducts" Relationship="Self.FK__OrderProd__fk_Cu__47DBAE45" FromRole="CustumerOrder" ToRole="OrderProduct" />
-    <NavigationProperty Name="Userr" Relationship="Self.padaro" FromRole="CustumerOrder" ToRole="Userr" />
   </EntityType>
   <EntityType Name="Inventory">
     <Key>
@@ -27,6 +27,14 @@
     <NavigationProperty Name="OrderProducts" Relationship="Self.FK__OrderProd__fk_In__48CFD27E" FromRole="Inventory" ToRole="OrderProduct" />
     <NavigationProperty Name="Products" Relationship="Self.FK__Product__fk_Inve__4BAC3F29" FromRole="Inventory" ToRole="Product" />
     <NavigationProperty Name="ProductToAdds" Relationship="Self.FK__ProductTo__fk_In__4E88ABD4" FromRole="Inventory" ToRole="ProductToAdd" />
+  </EntityType>
+  <EntityType Name="IsBusy">
+    <Key>
+      <PropertyRef Name="id_Busy" />
+    </Key>
+    <Property Name="id_Busy" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Userrs" Relationship="Self.FK__Userr__isBusy__5DCAEF64" FromRole="IsBusy" ToRole="Userr" />
   </EntityType>
   <EntityType Name="Job">
     <Key>
@@ -145,11 +153,13 @@
     <Property Name="surname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="phone" Type="Int32" />
     <Property Name="userType" Type="Int32" />
-    <NavigationProperty Name="CustumerOrders" Relationship="Self.padaro" FromRole="Userr" ToRole="CustumerOrder" />
-    <NavigationProperty Name="JobWorkers" Relationship="Self.dirba" FromRole="Userr" ToRole="JobWorker" />
-    <NavigationProperty Name="WarehouseAdditions" Relationship="Self.FK__Warehouse__fk_Us__35BCFE0A" FromRole="Userr" ToRole="WarehouseAddition" />
     <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="isBusy" Type="Int32" />
+    <NavigationProperty Name="CustumerOrders" Relationship="Self.FK__CustumerO__fk_Us__5CD6CB2B" FromRole="Userr" ToRole="CustumerOrder" />
+    <NavigationProperty Name="IsBusy1" Relationship="Self.FK__Userr__isBusy__5DCAEF64" FromRole="Userr" ToRole="IsBusy" />
+    <NavigationProperty Name="JobWorkers" Relationship="Self.dirba" FromRole="Userr" ToRole="JobWorker" />
+    <NavigationProperty Name="WarehouseAdditions" Relationship="Self.FK__Warehouse__fk_Us__35BCFE0A" FromRole="Userr" ToRole="WarehouseAddition" />
   </EntityType>
   <EntityType Name="Warehouse">
     <Key>
@@ -181,6 +191,18 @@
       </Principal>
       <Dependent Role="CustumerOrder">
         <PropertyRef Name="confirm" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CustumerO__fk_Us__5CD6CB2B">
+    <End Role="Userr" Type="Self.Userr" Multiplicity="1" />
+    <End Role="CustumerOrder" Type="Self.CustumerOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Userr">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CustumerOrder">
+        <PropertyRef Name="fk_UserID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -217,18 +239,6 @@
       </Principal>
       <Dependent Role="OrderProduct">
         <PropertyRef Name="fk_CustumerOrderorderNumer" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="padaro">
-    <End Role="Userr" Type="Self.Userr" Multiplicity="1" />
-    <End Role="CustumerOrder" Type="Self.CustumerOrder" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Userr">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="CustumerOrder">
-        <PropertyRef Name="fk_UserID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -277,6 +287,18 @@
       </Principal>
       <Dependent Role="ProductToAdd">
         <PropertyRef Name="fk_Inventoryproduct_numer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Userr__isBusy__5DCAEF64">
+    <End Role="IsBusy" Type="Self.IsBusy" Multiplicity="0..1" />
+    <End Role="Userr" Type="Self.Userr" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IsBusy">
+        <PropertyRef Name="id_Busy" />
+      </Principal>
+      <Dependent Role="Userr">
+        <PropertyRef Name="isBusy" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -400,9 +422,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="MydataEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="MydataEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="CustumerOrders" EntityType="Self.CustumerOrder" />
     <EntitySet Name="Inventories" EntityType="Self.Inventory" />
+    <EntitySet Name="IsBusies" EntityType="Self.IsBusy" />
     <EntitySet Name="Jobs" EntityType="Self.Job" />
     <EntitySet Name="JobWorkers" EntityType="Self.JobWorker" />
     <EntitySet Name="OrderConfirms" EntityType="Self.OrderConfirm" />
@@ -420,6 +443,10 @@
       <End Role="OrderConfirm" EntitySet="OrderConfirms" />
       <End Role="CustumerOrder" EntitySet="CustumerOrders" />
     </AssociationSet>
+    <AssociationSet Name="FK__CustumerO__fk_Us__5CD6CB2B" Association="Self.FK__CustumerO__fk_Us__5CD6CB2B">
+      <End Role="Userr" EntitySet="Userrs" />
+      <End Role="CustumerOrder" EntitySet="CustumerOrders" />
+    </AssociationSet>
     <AssociationSet Name="FK__CustumerO__statu__2E1BDC42" Association="Self.FK__CustumerO__statu__2E1BDC42">
       <End Role="Status" EntitySet="Status" />
       <End Role="CustumerOrder" EntitySet="CustumerOrders" />
@@ -431,10 +458,6 @@
     <AssociationSet Name="FK__OrderProd__fk_Cu__47DBAE45" Association="Self.FK__OrderProd__fk_Cu__47DBAE45">
       <End Role="CustumerOrder" EntitySet="CustumerOrders" />
       <End Role="OrderProduct" EntitySet="OrderProducts" />
-    </AssociationSet>
-    <AssociationSet Name="padaro" Association="Self.padaro">
-      <End Role="Userr" EntitySet="Userrs" />
-      <End Role="CustumerOrder" EntitySet="CustumerOrders" />
     </AssociationSet>
     <AssociationSet Name="FK__Inventory__fk_Ra__412EB0B6" Association="Self.FK__Inventory__fk_Ra__412EB0B6">
       <End Role="Rack" EntitySet="Racks" />
@@ -451,6 +474,10 @@
     <AssociationSet Name="FK__ProductTo__fk_In__4E88ABD4" Association="Self.FK__ProductTo__fk_In__4E88ABD4">
       <End Role="Inventory" EntitySet="Inventories" />
       <End Role="ProductToAdd" EntitySet="ProductToAdds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Userr__isBusy__5DCAEF64" Association="Self.FK__Userr__isBusy__5DCAEF64">
+      <End Role="IsBusy" EntitySet="IsBusies" />
+      <End Role="Userr" EntitySet="Userrs" />
     </AssociationSet>
     <AssociationSet Name="FK__OrderJob__fk_Job__398D8EEE" Association="Self.FK__OrderJob__fk_Job__398D8EEE">
       <End Role="Job" EntitySet="Jobs" />

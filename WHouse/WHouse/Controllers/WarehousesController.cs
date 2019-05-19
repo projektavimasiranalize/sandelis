@@ -12,7 +12,7 @@ namespace WHouse.Controllers
 {
     public class WarehousesController : Controller
     {
-        private MydataEntities db = new MydataEntities();
+        private MydataEntities1 db = new MydataEntities1();
 
         // GET: Warehouses
         public ActionResult Index()

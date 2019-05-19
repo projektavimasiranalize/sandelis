@@ -23,7 +23,7 @@ namespace WHouse.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (MydataEntities db = new MydataEntities())
+                using (MydataEntities1 db = new MydataEntities1())
                 {
                     var UserN = objUser.username;
                     var UserP= objUser.password;

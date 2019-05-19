@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="MydataModelStoreContainer" CdmEntityContainer="MydataEntities">
+  <EntityContainerMapping StorageEntityContainer="MydataModelStoreContainer" CdmEntityContainer="MydataEntities1">
     <EntitySetMapping Name="CustumerOrders">
       <EntityTypeMapping TypeName="MydataModel.CustumerOrder">
         <MappingFragment StoreEntitySet="CustumerOrder">
@@ -19,6 +19,14 @@
           <ScalarProperty Name="productName" ColumnName="productName" />
           <ScalarProperty Name="adress" ColumnName="adress" />
           <ScalarProperty Name="fk_Rackid_Rack" ColumnName="fk_Rackid_Rack" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IsBusies">
+      <EntityTypeMapping TypeName="MydataModel.IsBusy">
+        <MappingFragment StoreEntitySet="IsBusy">
+          <ScalarProperty Name="id_Busy" ColumnName="id_Busy" />
+          <ScalarProperty Name="name" ColumnName="name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -122,13 +130,14 @@
     <EntitySetMapping Name="Userrs">
       <EntityTypeMapping TypeName="MydataModel.Userr">
         <MappingFragment StoreEntitySet="Userr">
-          <ScalarProperty Name="password" ColumnName="password" />
-          <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="surname" ColumnName="surname" />
           <ScalarProperty Name="phone" ColumnName="phone" />
           <ScalarProperty Name="userType" ColumnName="userType" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="isBusy" ColumnName="isBusy" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

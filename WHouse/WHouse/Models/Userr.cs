@@ -29,9 +29,11 @@ namespace WHouse.Models
         public Nullable<int> userType { get; set; }
         public string username { get; set; }
         public string password { get; set; }
-        
+        public Nullable<int> isBusy { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustumerOrder> CustumerOrders { get; set; }
+        public virtual IsBusy IsBusy1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<JobWorker> JobWorkers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

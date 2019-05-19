@@ -12,7 +12,7 @@ namespace WHouse.Controllers
 {
     public class JobsController : Controller
     {
-        private MydataEntities db = new MydataEntities();
+        private MydataEntities1 db = new MydataEntities1();
 
         // GET: Jobs
         public ActionResult Index()
