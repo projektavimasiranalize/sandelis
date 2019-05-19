@@ -1,0 +1,51 @@
+﻿@model  WHouse.Models.Warehouse
+
+@{
+    ViewBag.Title = "Warehouses";
+}
+
+<h2>Warehouses</h2>
+
+@*<div>
+    @if (Model != null)
+    {
+
+        <table class="table table-striped">
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.adress</td>
+                        <td>@item.capacity</td>
+                    </tr>
+                }
+
+
+
+
+            </tbody>
+
+
+
+
+
+
+        </table>
+    }
+
+</div>*@
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <div class="container" style="width:40%;margin-top:2%">
+
+        @using (Html.BeginForm("SaveRecord", "Warehouse", FormMethod.Post))
+        {
+
+            @Html.TextBoxFor(model => model.capacity, new { @class = "form-control", @placeholder = "capacity" })
+
+            @Html.TextBoxFor(model => model.adress, new { @class = "form-control", @placeholder = "adress" })
+            @Html.TextBoxFor(model => model.id_Warehouse, new { @class = "form-control", @placeholder = "id_Warehouse" })
+            <input type="submit" value="Submit" class="btn btn-block btn-primary" />
+        }
+
+    </div>
