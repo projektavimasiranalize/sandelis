@@ -133,9 +133,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CustumerOrdersController.cs" />
+    <Compile Include="Controllers\InventoriesController.cs" />
+    <Compile Include="Controllers\JobsController.cs" />
+    <Compile Include="Controllers\JobWorkersController.cs" />
+    <Compile Include="Controllers\OrderJobsController.cs" />
+    <Compile Include="Controllers\OrderProductsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ProductToAddsController.cs" />
+    <Compile Include="Controllers\RacksController.cs" />
+    <Compile Include="Controllers\RoomsController.cs" />
     <Compile Include="Controllers\UserrsController.cs" />
-    <Compile Include="Controllers\WarehouseController.cs" />
+    <Compile Include="Controllers\WarehouseAdditionsController.cs" />
+    <Compile Include="Controllers\WarehousesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -213,7 +223,6 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Warehouse\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Userrs\Create.cshtml" />
     <Content Include="Views\Userrs\Delete.cshtml" />
@@ -225,6 +234,61 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Warehouses\Create.cshtml" />
+    <Content Include="Views\Warehouses\Delete.cshtml" />
+    <Content Include="Views\Warehouses\Details.cshtml" />
+    <Content Include="Views\Warehouses\Edit.cshtml" />
+    <Content Include="Views\Warehouses\Index.cshtml" />
+    <Content Include="Views\Rooms\Create.cshtml" />
+    <Content Include="Views\Rooms\Delete.cshtml" />
+    <Content Include="Views\Rooms\Details.cshtml" />
+    <Content Include="Views\Rooms\Edit.cshtml" />
+    <Content Include="Views\Rooms\Index.cshtml" />
+    <Content Include="Views\Racks\Create.cshtml" />
+    <Content Include="Views\Racks\Delete.cshtml" />
+    <Content Include="Views\Racks\Details.cshtml" />
+    <Content Include="Views\Racks\Edit.cshtml" />
+    <Content Include="Views\Racks\Index.cshtml" />
+    <Content Include="Views\Inventories\Create.cshtml" />
+    <Content Include="Views\Inventories\Delete.cshtml" />
+    <Content Include="Views\Inventories\Details.cshtml" />
+    <Content Include="Views\Inventories\Edit.cshtml" />
+    <Content Include="Views\Inventories\Index.cshtml" />
+    <Content Include="Views\CustumerOrders\Create.cshtml" />
+    <Content Include="Views\CustumerOrders\Delete.cshtml" />
+    <Content Include="Views\CustumerOrders\Details.cshtml" />
+    <Content Include="Views\CustumerOrders\Edit.cshtml" />
+    <Content Include="Views\CustumerOrders\Index.cshtml" />
+    <Content Include="Views\OrderProducts\Create.cshtml" />
+    <Content Include="Views\OrderProducts\Delete.cshtml" />
+    <Content Include="Views\OrderProducts\Details.cshtml" />
+    <Content Include="Views\OrderProducts\Edit.cshtml" />
+    <Content Include="Views\OrderProducts\Index.cshtml" />
+    <Content Include="Views\Jobs\Create.cshtml" />
+    <Content Include="Views\Jobs\Delete.cshtml" />
+    <Content Include="Views\Jobs\Details.cshtml" />
+    <Content Include="Views\Jobs\Edit.cshtml" />
+    <Content Include="Views\Jobs\Index.cshtml" />
+    <Content Include="Views\WarehouseAdditions\Create.cshtml" />
+    <Content Include="Views\WarehouseAdditions\Delete.cshtml" />
+    <Content Include="Views\WarehouseAdditions\Details.cshtml" />
+    <Content Include="Views\WarehouseAdditions\Edit.cshtml" />
+    <Content Include="Views\WarehouseAdditions\Index.cshtml" />
+    <Content Include="Views\ProductToAdds\Create.cshtml" />
+    <Content Include="Views\ProductToAdds\Delete.cshtml" />
+    <Content Include="Views\ProductToAdds\Details.cshtml" />
+    <Content Include="Views\ProductToAdds\Edit.cshtml" />
+    <Content Include="Views\ProductToAdds\Index.cshtml" />
+    <Content Include="Views\OrderJobs\Create.cshtml" />
+    <Content Include="Views\OrderJobs\Delete.cshtml" />
+    <Content Include="Views\OrderJobs\Details.cshtml" />
+    <Content Include="Views\OrderJobs\Edit.cshtml" />
+    <Content Include="Views\OrderJobs\Index.cshtml" />
+    <Content Include="Views\JobWorkers\Create.cshtml" />
+    <Content Include="Views\JobWorkers\Delete.cshtml" />
+    <Content Include="Views\JobWorkers\Details.cshtml" />
+    <Content Include="Views\JobWorkers\Edit.cshtml" />
+    <Content Include="Views\JobWorkers\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

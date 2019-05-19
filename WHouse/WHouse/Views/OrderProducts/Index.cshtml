@@ -1,0 +1,53 @@
+﻿@model IEnumerable<WHouse.Models.OrderProduct>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustumerOrder.orderNumer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inventory.productName)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustumerOrder.orderNumer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Inventory.productName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.id_OrderProduct }) |
+                @Html.ActionLink("Details", "Details", new { id=item.id_OrderProduct }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.id_OrderProduct })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

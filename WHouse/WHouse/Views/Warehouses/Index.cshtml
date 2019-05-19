@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WHouse.Models.Warehouse>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.capacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.adress)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.capacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.adress)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.id_Warehouse }) |
+                @Html.ActionLink("Details", "Details", new { id=item.id_Warehouse }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.id_Warehouse })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

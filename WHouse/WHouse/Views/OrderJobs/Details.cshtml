@@ -1,0 +1,74 @@
+﻿@model WHouse.Models.OrderJob
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>OrderJob</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.start)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.start)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.place)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.place)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CustumerOrder.orderNumer)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CustumerOrder.orderNumer)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Job.name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Job.name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.WarehouseAddition.additionNumer)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.WarehouseAddition.additionNumer)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Status1.name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Status1.name)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id_OrderJob }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿@model WHouse.Models.Inventory
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Inventory</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.productName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.productName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.adress)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.adress)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Rack.adress)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Rack.adress)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.product_numer }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
