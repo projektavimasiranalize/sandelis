@@ -32,23 +32,47 @@ namespace WHouse.Controllers
                     {
                         Session["ID"] = obj.ID.ToString();
                         Session["username"] = obj.username.ToString();
-                        return RedirectToAction("UserDashBoard");
+                        Session["userType"] = obj.userType;
+                        if (obj.userType == 1)                       
+                            return RedirectToAction("UserDashBoard");
+
+                        if (obj.userType == 2)
+                            return RedirectToAction("UserDashBoard2");
+
+                        if (obj.userType == 3)
+                            return RedirectToAction("UserDashBoard3");
+
                     }
                 }
             }
             return View(objUser);
         }
 
-                //    [ID] INT NOT NULL,
-                //[name] VARCHAR(255) NULL,
-                //[surname] VARCHAR(255) NULL,
-                //[phone]
-                //    INT NULL,
-                //[userType] INT NULL,
-                //[username] VARCHAR(255) NULL,
-                //[password] VARCHAR(255) NULL,
-
         public ActionResult UserDashBoard()
+        {
+            if (Session["ID"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
+
+        public ActionResult UserDashBoard2()
+        {
+            if (Session["ID"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
+
+        public ActionResult UserDashBoard3()
         {
             if (Session["ID"] != null)
             {
