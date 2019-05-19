@@ -47,15 +47,9 @@
                 @Html.DisplayFor(modelItem => item.Userr.name)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.orderNumer }) |
-                @Html.ActionLink("Details", "Details", new { id = item.orderNumer }) |
-                @Html.ActionLink(
-            linkText: "Start",
-            actionName: "Start",
-            controllerName: "JobAppointment",
-            routeValues: new { id = item.orderNumer },
-            htmlAttributes: null) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.orderNumer })
+                @Html.ActionLink("Edit", "Edit", new { id=item.orderNumer }) |
+                @Html.ActionLink("Details", "Details", new { id=item.orderNumer }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.orderNumer })
             </td>
         </tr>
     }
