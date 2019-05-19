@@ -292,6 +292,8 @@
     <Content Include="Views\Userrs\Details.cshtml" />
     <Content Include="Views\Userrs\Edit.cshtml" />
     <Content Include="Views\Userrs\Index.cshtml" />
+    <Content Include="Views\Login\UserDashBoard2.cshtml" />
+    <Content Include="Views\Login\UserDashBoard3.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
