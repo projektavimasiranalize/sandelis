@@ -142,6 +142,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CustumerOrdersController.cs" />
     <Compile Include="Controllers\InventoriesController.cs" />
+    <Compile Include="Controllers\JobAppointmentController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\JobWorkersController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -297,6 +298,8 @@
     <Content Include="Views\Userrs\Details.cshtml" />
     <Content Include="Views\Userrs\Edit.cshtml" />
     <Content Include="Views\Userrs\Index.cshtml" />
+    <Content Include="Views\JobAppointment\Index.cshtml" />
+    <Content Include="Views\JobAppointment\StartJob.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

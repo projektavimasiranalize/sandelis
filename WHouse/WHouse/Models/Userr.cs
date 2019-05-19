@@ -14,6 +14,7 @@ namespace WHouse.Models
     
     public partial class Userr
     {
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Userr()
         {
@@ -38,5 +39,7 @@ namespace WHouse.Models
         public virtual ICollection<JobWorker> JobWorkers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WarehouseAddition> WarehouseAdditions { get; set; }
+
+
     }
 }

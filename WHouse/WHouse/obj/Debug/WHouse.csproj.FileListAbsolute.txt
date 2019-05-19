@@ -143,3 +143,4 @@ C:\Users\Aurimas\Desktop\sandelis\sandelis\WHouse\WHouse\bin\Microsoft.CodeDom.P
 C:\Users\Aurimas\Desktop\sandelis\sandelis\WHouse\WHouse\obj\Debug\WHouse.csproj.CopyComplete
 C:\Users\Aurimas\Desktop\sandelis\sandelis\WHouse\WHouse\obj\Debug\WHouse.dll
 C:\Users\Aurimas\Desktop\sandelis\sandelis\WHouse\WHouse\obj\Debug\WHouse.pdb
+C:\Users\Aurimas\Desktop\sandelis\sandelis\WHouse\WHouse\obj\Debug\WHouse.csprojAssemblyReference.cache
