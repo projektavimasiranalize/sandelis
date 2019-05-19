@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MydataModelStoreContainer" CdmEntityContainer="MydataEntities">
+    <EntitySetMapping Name="CustumerOrders">
+      <EntityTypeMapping TypeName="MydataModel.CustumerOrder">
+        <MappingFragment StoreEntitySet="CustumerOrder">
+          <ScalarProperty Name="orderNumer" ColumnName="orderNumer" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="confirm" ColumnName="confirm" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="fk_UserID" ColumnName="fk_UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Inventories">
+      <EntityTypeMapping TypeName="MydataModel.Inventory">
+        <MappingFragment StoreEntitySet="Inventory">
+          <ScalarProperty Name="product_numer" ColumnName="product_numer" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
+          <ScalarProperty Name="adress" ColumnName="adress" />
+          <ScalarProperty Name="fk_Rackid_Rack" ColumnName="fk_Rackid_Rack" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jobs">
+      <EntityTypeMapping TypeName="MydataModel.Job">
+        <MappingFragment StoreEntitySet="Job">
+          <ScalarProperty Name="workNumer" ColumnName="workNumer" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobWorkers">
+      <EntityTypeMapping TypeName="MydataModel.JobWorker">
+        <MappingFragment StoreEntitySet="JobWorker">
+          <ScalarProperty Name="posision" ColumnName="posision" />
+          <ScalarProperty Name="id_JobWorker" ColumnName="id_JobWorker" />
+          <ScalarProperty Name="fk_OrderJobid_OrderJob" ColumnName="fk_OrderJobid_OrderJob" />
+          <ScalarProperty Name="fk_UserID" ColumnName="fk_UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderConfirms">
+      <EntityTypeMapping TypeName="MydataModel.OrderConfirm">
+        <MappingFragment StoreEntitySet="OrderConfirm">
+          <ScalarProperty Name="id_OrderConfirm" ColumnName="id_OrderConfirm" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderJobs">
+      <EntityTypeMapping TypeName="MydataModel.OrderJob">
+        <MappingFragment StoreEntitySet="OrderJob">
+          <ScalarProperty Name="start" ColumnName="start" />
+          <ScalarProperty Name="place" ColumnName="place" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="id_OrderJob" ColumnName="id_OrderJob" />
+          <ScalarProperty Name="fk_JobworkNumer" ColumnName="fk_JobworkNumer" />
+          <ScalarProperty Name="fk_WarehouseAdditionadditionNumer" ColumnName="fk_WarehouseAdditionadditionNumer" />
+          <ScalarProperty Name="fk_CustumerOrderorderNumer" ColumnName="fk_CustumerOrderorderNumer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderProducts">
+      <EntityTypeMapping TypeName="MydataModel.OrderProduct">
+        <MappingFragment StoreEntitySet="OrderProduct">
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="id_OrderProduct" ColumnName="id_OrderProduct" />
+          <ScalarProperty Name="fk_CustumerOrderorderNumer" ColumnName="fk_CustumerOrderorderNumer" />
+          <ScalarProperty Name="fk_Inventoryproduct_numer" ColumnName="fk_Inventoryproduct_numer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="MydataModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="productCode" ColumnName="productCode" />
+          <ScalarProperty Name="expireDateStart" ColumnName="expireDateStart" />
+          <ScalarProperty Name="expireDateEnd" ColumnName="expireDateEnd" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="fk_Inventoryproduct_numer" ColumnName="fk_Inventoryproduct_numer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductToAdds">
+      <EntityTypeMapping TypeName="MydataModel.ProductToAdd">
+        <MappingFragment StoreEntitySet="ProductToAdd">
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="id_ProductToAdd" ColumnName="id_ProductToAdd" />
+          <ScalarProperty Name="fk_Inventoryproduct_numer" ColumnName="fk_Inventoryproduct_numer" />
+          <ScalarProperty Name="fk_WarehouseAdditionadditionNumer" ColumnName="fk_WarehouseAdditionadditionNumer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Racks">
+      <EntityTypeMapping TypeName="MydataModel.Rack">
+        <MappingFragment StoreEntitySet="Rack">
+          <ScalarProperty Name="adress" ColumnName="adress" />
+          <ScalarProperty Name="id_Rack" ColumnName="id_Rack" />
+          <ScalarProperty Name="fk_Roomid_Room" ColumnName="fk_Roomid_Room" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rooms">
+      <EntityTypeMapping TypeName="MydataModel.Room">
+        <MappingFragment StoreEntitySet="Room">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="adress" ColumnName="adress" />
+          <ScalarProperty Name="id_Room" ColumnName="id_Room" />
+          <ScalarProperty Name="fk_Warehouseid_Warehouse" ColumnName="fk_Warehouseid_Warehouse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="MydataModel.Status">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="id_Status" ColumnName="id_Status" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Userrs">
+      <EntityTypeMapping TypeName="MydataModel.Userr">
+        <MappingFragment StoreEntitySet="Userr">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="userType" ColumnName="userType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Warehouses">
+      <EntityTypeMapping TypeName="MydataModel.Warehouse">
+        <MappingFragment StoreEntitySet="Warehouse">
+          <ScalarProperty Name="capacity" ColumnName="capacity" />
+          <ScalarProperty Name="adress" ColumnName="adress" />
+          <ScalarProperty Name="id_Warehouse" ColumnName="id_Warehouse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WarehouseAdditions">
+      <EntityTypeMapping TypeName="MydataModel.WarehouseAddition">
+        <MappingFragment StoreEntitySet="WarehouseAddition">
+          <ScalarProperty Name="additionNumer" ColumnName="additionNumer" />
+          <ScalarProperty Name="confirm" ColumnName="confirm" />
+          <ScalarProperty Name="fk_UserID" ColumnName="fk_UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

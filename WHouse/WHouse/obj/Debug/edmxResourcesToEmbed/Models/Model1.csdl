@@ -1,0 +1,494 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MydataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CustumerOrder">
+    <Key>
+      <PropertyRef Name="orderNumer" />
+    </Key>
+    <Property Name="orderNumer" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="DateTime" Precision="0" />
+    <Property Name="confirm" Type="Int32" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="fk_UserID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="OrderConfirm" Relationship="Self.FK__CustumerO__confi__2D27B809" FromRole="CustumerOrder" ToRole="OrderConfirm" />
+    <NavigationProperty Name="Status1" Relationship="Self.FK__CustumerO__statu__2E1BDC42" FromRole="CustumerOrder" ToRole="Status" />
+    <NavigationProperty Name="OrderJobs" Relationship="Self.FK__OrderJob__fk_Cus__3B75D760" FromRole="CustumerOrder" ToRole="OrderJob" />
+    <NavigationProperty Name="OrderProducts" Relationship="Self.FK__OrderProd__fk_Cu__47DBAE45" FromRole="CustumerOrder" ToRole="OrderProduct" />
+    <NavigationProperty Name="Userr" Relationship="Self.padaro" FromRole="CustumerOrder" ToRole="Userr" />
+  </EntityType>
+  <EntityType Name="Inventory">
+    <Key>
+      <PropertyRef Name="product_numer" />
+    </Key>
+    <Property Name="product_numer" Type="Int32" Nullable="false" />
+    <Property Name="productName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="adress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="fk_Rackid_Rack" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Rack" Relationship="Self.FK__Inventory__fk_Ra__412EB0B6" FromRole="Inventory" ToRole="Rack" />
+    <NavigationProperty Name="OrderProducts" Relationship="Self.FK__OrderProd__fk_In__48CFD27E" FromRole="Inventory" ToRole="OrderProduct" />
+    <NavigationProperty Name="Products" Relationship="Self.FK__Product__fk_Inve__4BAC3F29" FromRole="Inventory" ToRole="Product" />
+    <NavigationProperty Name="ProductToAdds" Relationship="Self.FK__ProductTo__fk_In__4E88ABD4" FromRole="Inventory" ToRole="ProductToAdd" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="workNumer" />
+    </Key>
+    <Property Name="workNumer" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="OrderJobs" Relationship="Self.FK__OrderJob__fk_Job__398D8EEE" FromRole="Job" ToRole="OrderJob" />
+  </EntityType>
+  <EntityType Name="JobWorker">
+    <Key>
+      <PropertyRef Name="id_JobWorker" />
+    </Key>
+    <Property Name="posision" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="id_JobWorker" Type="Int32" Nullable="false" />
+    <Property Name="fk_OrderJobid_OrderJob" Type="Int32" Nullable="false" />
+    <Property Name="fk_UserID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Userr" Relationship="Self.dirba" FromRole="JobWorker" ToRole="Userr" />
+    <NavigationProperty Name="OrderJob" Relationship="Self.priskiriamas" FromRole="JobWorker" ToRole="OrderJob" />
+  </EntityType>
+  <EntityType Name="OrderConfirm">
+    <Key>
+      <PropertyRef Name="id_OrderConfirm" />
+    </Key>
+    <Property Name="id_OrderConfirm" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CustumerOrders" Relationship="Self.FK__CustumerO__confi__2D27B809" FromRole="OrderConfirm" ToRole="CustumerOrder" />
+    <NavigationProperty Name="WarehouseAdditions" Relationship="Self.FK__Warehouse__confi__34C8D9D1" FromRole="OrderConfirm" ToRole="WarehouseAddition" />
+  </EntityType>
+  <EntityType Name="OrderJob">
+    <Key>
+      <PropertyRef Name="id_OrderJob" />
+    </Key>
+    <Property Name="start" Type="DateTime" Precision="0" />
+    <Property Name="place" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="id_OrderJob" Type="Int32" Nullable="false" />
+    <Property Name="fk_JobworkNumer" Type="Int32" Nullable="false" />
+    <Property Name="fk_WarehouseAdditionadditionNumer" Type="Int32" Nullable="false" />
+    <Property Name="fk_CustumerOrderorderNumer" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CustumerOrder" Relationship="Self.FK__OrderJob__fk_Cus__3B75D760" FromRole="OrderJob" ToRole="CustumerOrder" />
+    <NavigationProperty Name="Job" Relationship="Self.FK__OrderJob__fk_Job__398D8EEE" FromRole="OrderJob" ToRole="Job" />
+    <NavigationProperty Name="JobWorkers" Relationship="Self.priskiriamas" FromRole="OrderJob" ToRole="JobWorker" />
+    <NavigationProperty Name="WarehouseAddition" Relationship="Self.FK__OrderJob__fk_War__3A81B327" FromRole="OrderJob" ToRole="WarehouseAddition" />
+    <NavigationProperty Name="Status1" Relationship="Self.FK__OrderJob__status__38996AB5" FromRole="OrderJob" ToRole="Status" />
+  </EntityType>
+  <EntityType Name="OrderProduct">
+    <Key>
+      <PropertyRef Name="id_OrderProduct" />
+    </Key>
+    <Property Name="amount" Type="Int32" />
+    <Property Name="id_OrderProduct" Type="Int32" Nullable="false" />
+    <Property Name="fk_CustumerOrderorderNumer" Type="Int32" Nullable="false" />
+    <Property Name="fk_Inventoryproduct_numer" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CustumerOrder" Relationship="Self.FK__OrderProd__fk_Cu__47DBAE45" FromRole="OrderProduct" ToRole="CustumerOrder" />
+    <NavigationProperty Name="Inventory" Relationship="Self.FK__OrderProd__fk_In__48CFD27E" FromRole="OrderProduct" ToRole="Inventory" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="productCode" />
+    </Key>
+    <Property Name="productCode" Type="Int32" Nullable="false" />
+    <Property Name="expireDateStart" Type="DateTime" Precision="0" />
+    <Property Name="expireDateEnd" Type="DateTime" Precision="0" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="fk_Inventoryproduct_numer" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Inventory" Relationship="Self.FK__Product__fk_Inve__4BAC3F29" FromRole="Product" ToRole="Inventory" />
+  </EntityType>
+  <EntityType Name="ProductToAdd">
+    <Key>
+      <PropertyRef Name="id_ProductToAdd" />
+    </Key>
+    <Property Name="amount" Type="Int32" />
+    <Property Name="id_ProductToAdd" Type="Int32" Nullable="false" />
+    <Property Name="fk_Inventoryproduct_numer" Type="Int32" Nullable="false" />
+    <Property Name="fk_WarehouseAdditionadditionNumer" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Inventory" Relationship="Self.FK__ProductTo__fk_In__4E88ABD4" FromRole="ProductToAdd" ToRole="Inventory" />
+    <NavigationProperty Name="WarehouseAddition" Relationship="Self.FK__ProductTo__fk_Wa__4F7CD00D" FromRole="ProductToAdd" ToRole="WarehouseAddition" />
+  </EntityType>
+  <EntityType Name="Rack">
+    <Key>
+      <PropertyRef Name="id_Rack" />
+    </Key>
+    <Property Name="adress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="id_Rack" Type="Int32" Nullable="false" />
+    <Property Name="fk_Roomid_Room" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Inventories" Relationship="Self.FK__Inventory__fk_Ra__412EB0B6" FromRole="Rack" ToRole="Inventory" />
+    <NavigationProperty Name="Room" Relationship="Self.FK__Rack__fk_Roomid___3E52440B" FromRole="Rack" ToRole="Room" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="id_Room" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="adress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="id_Room" Type="Int32" Nullable="false" />
+    <Property Name="fk_Warehouseid_Warehouse" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Racks" Relationship="Self.FK__Rack__fk_Roomid___3E52440B" FromRole="Room" ToRole="Rack" />
+    <NavigationProperty Name="Warehouse" Relationship="Self.turi" FromRole="Room" ToRole="Warehouse" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="id_Status" />
+    </Key>
+    <Property Name="id_Status" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="17" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CustumerOrders" Relationship="Self.FK__CustumerO__statu__2E1BDC42" FromRole="Status" ToRole="CustumerOrder" />
+    <NavigationProperty Name="OrderJobs" Relationship="Self.FK__OrderJob__status__38996AB5" FromRole="Status" ToRole="OrderJob" />
+  </EntityType>
+  <EntityType Name="Userr">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="surname" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="Int32" />
+    <Property Name="userType" Type="Int32" />
+    <NavigationProperty Name="CustumerOrders" Relationship="Self.padaro" FromRole="Userr" ToRole="CustumerOrder" />
+    <NavigationProperty Name="JobWorkers" Relationship="Self.dirba" FromRole="Userr" ToRole="JobWorker" />
+    <NavigationProperty Name="WarehouseAdditions" Relationship="Self.FK__Warehouse__fk_Us__35BCFE0A" FromRole="Userr" ToRole="WarehouseAddition" />
+  </EntityType>
+  <EntityType Name="Warehouse">
+    <Key>
+      <PropertyRef Name="id_Warehouse" />
+    </Key>
+    <Property Name="capacity" Type="Int32" />
+    <Property Name="adress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="id_Warehouse" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Rooms" Relationship="Self.turi" FromRole="Warehouse" ToRole="Room" />
+  </EntityType>
+  <EntityType Name="WarehouseAddition">
+    <Key>
+      <PropertyRef Name="additionNumer" />
+    </Key>
+    <Property Name="additionNumer" Type="Int32" Nullable="false" />
+    <Property Name="confirm" Type="Int32" />
+    <Property Name="fk_UserID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="OrderConfirm" Relationship="Self.FK__Warehouse__confi__34C8D9D1" FromRole="WarehouseAddition" ToRole="OrderConfirm" />
+    <NavigationProperty Name="OrderJobs" Relationship="Self.FK__OrderJob__fk_War__3A81B327" FromRole="WarehouseAddition" ToRole="OrderJob" />
+    <NavigationProperty Name="ProductToAdds" Relationship="Self.FK__ProductTo__fk_Wa__4F7CD00D" FromRole="WarehouseAddition" ToRole="ProductToAdd" />
+    <NavigationProperty Name="Userr" Relationship="Self.FK__Warehouse__fk_Us__35BCFE0A" FromRole="WarehouseAddition" ToRole="Userr" />
+  </EntityType>
+  <Association Name="FK__CustumerO__confi__2D27B809">
+    <End Role="OrderConfirm" Type="Self.OrderConfirm" Multiplicity="0..1" />
+    <End Role="CustumerOrder" Type="Self.CustumerOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderConfirm">
+        <PropertyRef Name="id_OrderConfirm" />
+      </Principal>
+      <Dependent Role="CustumerOrder">
+        <PropertyRef Name="confirm" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CustumerO__statu__2E1BDC42">
+    <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+    <End Role="CustumerOrder" Type="Self.CustumerOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="id_Status" />
+      </Principal>
+      <Dependent Role="CustumerOrder">
+        <PropertyRef Name="status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderJob__fk_Cus__3B75D760">
+    <End Role="CustumerOrder" Type="Self.CustumerOrder" Multiplicity="1" />
+    <End Role="OrderJob" Type="Self.OrderJob" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustumerOrder">
+        <PropertyRef Name="orderNumer" />
+      </Principal>
+      <Dependent Role="OrderJob">
+        <PropertyRef Name="fk_CustumerOrderorderNumer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderProd__fk_Cu__47DBAE45">
+    <End Role="CustumerOrder" Type="Self.CustumerOrder" Multiplicity="1" />
+    <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustumerOrder">
+        <PropertyRef Name="orderNumer" />
+      </Principal>
+      <Dependent Role="OrderProduct">
+        <PropertyRef Name="fk_CustumerOrderorderNumer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="padaro">
+    <End Role="Userr" Type="Self.Userr" Multiplicity="1" />
+    <End Role="CustumerOrder" Type="Self.CustumerOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Userr">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CustumerOrder">
+        <PropertyRef Name="fk_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Inventory__fk_Ra__412EB0B6">
+    <End Role="Rack" Type="Self.Rack" Multiplicity="1" />
+    <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rack">
+        <PropertyRef Name="id_Rack" />
+      </Principal>
+      <Dependent Role="Inventory">
+        <PropertyRef Name="fk_Rackid_Rack" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderProd__fk_In__48CFD27E">
+    <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
+    <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inventory">
+        <PropertyRef Name="product_numer" />
+      </Principal>
+      <Dependent Role="OrderProduct">
+        <PropertyRef Name="fk_Inventoryproduct_numer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__fk_Inve__4BAC3F29">
+    <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inventory">
+        <PropertyRef Name="product_numer" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="fk_Inventoryproduct_numer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductTo__fk_In__4E88ABD4">
+    <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
+    <End Role="ProductToAdd" Type="Self.ProductToAdd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inventory">
+        <PropertyRef Name="product_numer" />
+      </Principal>
+      <Dependent Role="ProductToAdd">
+        <PropertyRef Name="fk_Inventoryproduct_numer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderJob__fk_Job__398D8EEE">
+    <End Role="Job" Type="Self.Job" Multiplicity="1" />
+    <End Role="OrderJob" Type="Self.OrderJob" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="workNumer" />
+      </Principal>
+      <Dependent Role="OrderJob">
+        <PropertyRef Name="fk_JobworkNumer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="dirba">
+    <End Role="Userr" Type="Self.Userr" Multiplicity="1" />
+    <End Role="JobWorker" Type="Self.JobWorker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Userr">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="JobWorker">
+        <PropertyRef Name="fk_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="priskiriamas">
+    <End Role="OrderJob" Type="Self.OrderJob" Multiplicity="1" />
+    <End Role="JobWorker" Type="Self.JobWorker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderJob">
+        <PropertyRef Name="id_OrderJob" />
+      </Principal>
+      <Dependent Role="JobWorker">
+        <PropertyRef Name="fk_OrderJobid_OrderJob" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Warehouse__confi__34C8D9D1">
+    <End Role="OrderConfirm" Type="Self.OrderConfirm" Multiplicity="0..1" />
+    <End Role="WarehouseAddition" Type="Self.WarehouseAddition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderConfirm">
+        <PropertyRef Name="id_OrderConfirm" />
+      </Principal>
+      <Dependent Role="WarehouseAddition">
+        <PropertyRef Name="confirm" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderJob__fk_War__3A81B327">
+    <End Role="WarehouseAddition" Type="Self.WarehouseAddition" Multiplicity="1" />
+    <End Role="OrderJob" Type="Self.OrderJob" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WarehouseAddition">
+        <PropertyRef Name="additionNumer" />
+      </Principal>
+      <Dependent Role="OrderJob">
+        <PropertyRef Name="fk_WarehouseAdditionadditionNumer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderJob__status__38996AB5">
+    <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+    <End Role="OrderJob" Type="Self.OrderJob" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="id_Status" />
+      </Principal>
+      <Dependent Role="OrderJob">
+        <PropertyRef Name="status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductTo__fk_Wa__4F7CD00D">
+    <End Role="WarehouseAddition" Type="Self.WarehouseAddition" Multiplicity="1" />
+    <End Role="ProductToAdd" Type="Self.ProductToAdd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WarehouseAddition">
+        <PropertyRef Name="additionNumer" />
+      </Principal>
+      <Dependent Role="ProductToAdd">
+        <PropertyRef Name="fk_WarehouseAdditionadditionNumer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rack__fk_Roomid___3E52440B">
+    <End Role="Room" Type="Self.Room" Multiplicity="1" />
+    <End Role="Rack" Type="Self.Rack" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="id_Room" />
+      </Principal>
+      <Dependent Role="Rack">
+        <PropertyRef Name="fk_Roomid_Room" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="turi">
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="1" />
+    <End Role="Room" Type="Self.Room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="id_Warehouse" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="fk_Warehouseid_Warehouse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Warehouse__fk_Us__35BCFE0A">
+    <End Role="Userr" Type="Self.Userr" Multiplicity="1" />
+    <End Role="WarehouseAddition" Type="Self.WarehouseAddition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Userr">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WarehouseAddition">
+        <PropertyRef Name="fk_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MydataEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CustumerOrders" EntityType="Self.CustumerOrder" />
+    <EntitySet Name="Inventories" EntityType="Self.Inventory" />
+    <EntitySet Name="Jobs" EntityType="Self.Job" />
+    <EntitySet Name="JobWorkers" EntityType="Self.JobWorker" />
+    <EntitySet Name="OrderConfirms" EntityType="Self.OrderConfirm" />
+    <EntitySet Name="OrderJobs" EntityType="Self.OrderJob" />
+    <EntitySet Name="OrderProducts" EntityType="Self.OrderProduct" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="ProductToAdds" EntityType="Self.ProductToAdd" />
+    <EntitySet Name="Racks" EntityType="Self.Rack" />
+    <EntitySet Name="Rooms" EntityType="Self.Room" />
+    <EntitySet Name="Status" EntityType="Self.Status" />
+    <EntitySet Name="Userrs" EntityType="Self.Userr" />
+    <EntitySet Name="Warehouses" EntityType="Self.Warehouse" />
+    <EntitySet Name="WarehouseAdditions" EntityType="Self.WarehouseAddition" />
+    <AssociationSet Name="FK__CustumerO__confi__2D27B809" Association="Self.FK__CustumerO__confi__2D27B809">
+      <End Role="OrderConfirm" EntitySet="OrderConfirms" />
+      <End Role="CustumerOrder" EntitySet="CustumerOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CustumerO__statu__2E1BDC42" Association="Self.FK__CustumerO__statu__2E1BDC42">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="CustumerOrder" EntitySet="CustumerOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderJob__fk_Cus__3B75D760" Association="Self.FK__OrderJob__fk_Cus__3B75D760">
+      <End Role="CustumerOrder" EntitySet="CustumerOrders" />
+      <End Role="OrderJob" EntitySet="OrderJobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderProd__fk_Cu__47DBAE45" Association="Self.FK__OrderProd__fk_Cu__47DBAE45">
+      <End Role="CustumerOrder" EntitySet="CustumerOrders" />
+      <End Role="OrderProduct" EntitySet="OrderProducts" />
+    </AssociationSet>
+    <AssociationSet Name="padaro" Association="Self.padaro">
+      <End Role="Userr" EntitySet="Userrs" />
+      <End Role="CustumerOrder" EntitySet="CustumerOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Inventory__fk_Ra__412EB0B6" Association="Self.FK__Inventory__fk_Ra__412EB0B6">
+      <End Role="Rack" EntitySet="Racks" />
+      <End Role="Inventory" EntitySet="Inventories" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderProd__fk_In__48CFD27E" Association="Self.FK__OrderProd__fk_In__48CFD27E">
+      <End Role="Inventory" EntitySet="Inventories" />
+      <End Role="OrderProduct" EntitySet="OrderProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__fk_Inve__4BAC3F29" Association="Self.FK__Product__fk_Inve__4BAC3F29">
+      <End Role="Inventory" EntitySet="Inventories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductTo__fk_In__4E88ABD4" Association="Self.FK__ProductTo__fk_In__4E88ABD4">
+      <End Role="Inventory" EntitySet="Inventories" />
+      <End Role="ProductToAdd" EntitySet="ProductToAdds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderJob__fk_Job__398D8EEE" Association="Self.FK__OrderJob__fk_Job__398D8EEE">
+      <End Role="Job" EntitySet="Jobs" />
+      <End Role="OrderJob" EntitySet="OrderJobs" />
+    </AssociationSet>
+    <AssociationSet Name="dirba" Association="Self.dirba">
+      <End Role="Userr" EntitySet="Userrs" />
+      <End Role="JobWorker" EntitySet="JobWorkers" />
+    </AssociationSet>
+    <AssociationSet Name="priskiriamas" Association="Self.priskiriamas">
+      <End Role="OrderJob" EntitySet="OrderJobs" />
+      <End Role="JobWorker" EntitySet="JobWorkers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Warehouse__confi__34C8D9D1" Association="Self.FK__Warehouse__confi__34C8D9D1">
+      <End Role="OrderConfirm" EntitySet="OrderConfirms" />
+      <End Role="WarehouseAddition" EntitySet="WarehouseAdditions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderJob__fk_War__3A81B327" Association="Self.FK__OrderJob__fk_War__3A81B327">
+      <End Role="WarehouseAddition" EntitySet="WarehouseAdditions" />
+      <End Role="OrderJob" EntitySet="OrderJobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderJob__status__38996AB5" Association="Self.FK__OrderJob__status__38996AB5">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="OrderJob" EntitySet="OrderJobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductTo__fk_Wa__4F7CD00D" Association="Self.FK__ProductTo__fk_Wa__4F7CD00D">
+      <End Role="WarehouseAddition" EntitySet="WarehouseAdditions" />
+      <End Role="ProductToAdd" EntitySet="ProductToAdds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rack__fk_Roomid___3E52440B" Association="Self.FK__Rack__fk_Roomid___3E52440B">
+      <End Role="Room" EntitySet="Rooms" />
+      <End Role="Rack" EntitySet="Racks" />
+    </AssociationSet>
+    <AssociationSet Name="turi" Association="Self.turi">
+      <End Role="Warehouse" EntitySet="Warehouses" />
+      <End Role="Room" EntitySet="Rooms" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Warehouse__fk_Us__35BCFE0A" Association="Self.FK__Warehouse__fk_Us__35BCFE0A">
+      <End Role="Userr" EntitySet="Userrs" />
+      <End Role="WarehouseAddition" EntitySet="WarehouseAdditions" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

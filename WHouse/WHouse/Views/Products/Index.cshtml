@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WHouse.Models.Product>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.expireDateStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.expireDateEnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inventory.productName)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.expireDateStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.expireDateEnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Inventory.productName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.productCode }) |
+                @Html.ActionLink("Details", "Details", new { id=item.productCode }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.productCode })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
