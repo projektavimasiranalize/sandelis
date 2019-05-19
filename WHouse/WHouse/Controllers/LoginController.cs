@@ -33,15 +33,15 @@ namespace WHouse.Controllers
                         Session["ID"] = obj.ID.ToString();
                         Session["username"] = obj.username.ToString();
                         Session["userType"] = obj.userType;
+
                         if (obj.userType == 1)                       
                             return RedirectToAction("UserDashBoard");
 
                         if (obj.userType == 2)
-                            return RedirectToAction("UserDashBoard2");
+                            return RedirectToAction("AdminDashBoard");
 
                         if (obj.userType == 3)
-                            return RedirectToAction("UserDashBoard3");
-
+                            return RedirectToAction("WorkerDashBoard");
                     }
                 }
             }
@@ -60,7 +60,7 @@ namespace WHouse.Controllers
             }
         }
 
-        public ActionResult UserDashBoard2()
+        public ActionResult AdminDashBoard()
         {
             if (Session["ID"] != null)
             {
@@ -72,7 +72,7 @@ namespace WHouse.Controllers
             }
         }
 
-        public ActionResult UserDashBoard3()
+        public ActionResult WorkerDashBoard()
         {
             if (Session["ID"] != null)
             {
