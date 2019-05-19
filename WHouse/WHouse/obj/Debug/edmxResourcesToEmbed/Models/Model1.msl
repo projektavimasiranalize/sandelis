@@ -122,6 +122,8 @@
     <EntitySetMapping Name="Userrs">
       <EntityTypeMapping TypeName="MydataModel.Userr">
         <MappingFragment StoreEntitySet="Userr">
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="surname" ColumnName="surname" />

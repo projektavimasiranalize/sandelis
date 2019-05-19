@@ -115,6 +115,9 @@
     <Property Name="surname" Type="varchar" MaxLength="255" />
     <Property Name="phone" Type="int" />
     <Property Name="userType" Type="int" />
+    <Property Name="username" Type="varchar" MaxLength="255" />
+    <Property Name="password" Type="varchar" MaxLength="255" />
+    <Property Name="isBusy" Type="int" />
   </EntityType>
   <EntityType Name="Warehouse">
     <Key>
