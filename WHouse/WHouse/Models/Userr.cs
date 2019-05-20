@@ -55,8 +55,6 @@ namespace WHouse.Models
         {
             List<Userr> list = db.Userrs.Where(a => a.userType == 3 && a.isBusy == 2).ToList();
             return list;
-
-
         }
     }
 }

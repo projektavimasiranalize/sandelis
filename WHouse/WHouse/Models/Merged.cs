@@ -10,6 +10,5 @@ namespace WHouse.Models
         public List<Userr> wrokers { get; set; }
         public List<Job> works { get; set; }
         public List<OrderJob> orJobs { get; set; }
-        public string kazkas { get; set; }
     }
 }
