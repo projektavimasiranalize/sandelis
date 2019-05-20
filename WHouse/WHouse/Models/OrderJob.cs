@@ -45,7 +45,7 @@ namespace WHouse.Models
         public virtual Status Status1 { get; set; }
 
 
-        public void InsertOrderJob(int jobid, int orderid)
+        public int InsertOrderJob(int jobid, int orderid)
         {
             Random rnd = new Random();
             OrderJob emp = new OrderJob();
@@ -61,8 +61,9 @@ namespace WHouse.Models
                 emp.fk_WarehouseAdditionadditionNumer = 1;
                 db.OrderJobs.Add(emp);
                 db.SaveChanges();
+                return emp.id_OrderJob;
             }
-
+            return 0;
         }
     }
 }

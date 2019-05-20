@@ -5,28 +5,12 @@
 
     ViewBag.Title = "JobApointment";
 }
+<style>
 
-
-
-
-
-<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-
-@using (Html.BeginForm("AppointJobsAndWorkers", "JobAppointment", FormMethod.Post))
-{
-    foreach (var name in @Model.works)
-    {
-<li class="list-group-item">
-    @name.name
-
-    @Html.DropDownListFor(x => Model.wrokers, new SelectList(Model.wrokers, "name","surname"), htmlAttributes: new { @class = "form-control", id = "worker" })
-</li>
-}
-<input type="submit" value="Submit" class="btn btn-block btn-primary" />
-}
-
-
-
+    ul li {
+        display: inline;
+    }
+    </style>
 <div class="panel panel-body" style="min-height:256px">
 
     <div class="col-md-9">
@@ -36,23 +20,12 @@
             <div class="col-md-6">
 
                 <ul class="list-group">
-                    @foreach (var name in @Model.works)
-                    {
-
-                        <li class="list-group-item">@name.name </li>
-
-                    }
-
-                </ul>
-
-            </div>
-            <div class="col-md-6">
-
-                <ul class="list-group">
                     @foreach (var workers in @Model.wrokers)
                     {
 
                         <li class="list-group-item">@workers.name </li>
+                        <li class="list-group-item">@workers.surname </li>
+                        <li class="list-group-item">@workers.ID </li>
 
                     }
                 </ul>
@@ -63,4 +36,51 @@
     </div>
 
 </div>
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+@using (Html.BeginForm("AppointJobsAndWorkers", "JobAppointment", FormMethod.Post))
+{
+    @Html.TextBoxFor(model => model.first, new { @class = "form-control", @placeholder = "Pakrauti" })
+    @Html.TextBoxFor(model => model.second, new { @class = "form-control", @placeholder = "Iskrauti" })
+    @Html.TextBoxFor(model => model.third, new { @class = "form-control", @placeholder = "Nunesti" })
+    @Html.TextBoxFor(model => model.fourth, new { @class = "form-control", @placeholder = "Nuvesti" })
+    @Html.TextBoxFor(model => model.fifth, new { @class = "form-control", @placeholder = "Uzkelti" })
+    @Html.TextBoxFor(model => model.six, new { @class = "form-control", @placeholder = "Nukelti" })
+    @Html.HiddenFor(model => model.id);
+    @*<li class="list-group-item">
+            @Html.DropDownListFor(model => Model.first, new SelectList(Model.wrokers, "name", "surname"), htmlAttributes: new { @class = "form-control", id = "worker" })
+        </li>
+        <li class="list-group-item">
+
+
+            @Html.DropDownListFor(model => Model.second, new SelectList(Model.wrokers, "name", "surname"), htmlAttributes: new { @class = "form-control", id = "worker" })
+        </li>
+        <li class="list-group-item">
+
+
+            @Html.DropDownListFor(model => Model.third, new SelectList(Model.wrokers, "name", "surname"), htmlAttributes: new { @class = "form-control", id = "worker" })
+        </li>
+        <li class="list-group-item">
+
+
+            @Html.DropDownListFor(model => Model.fourth, new SelectList(Model.wrokers, "name", "surname"), htmlAttributes: new { @class = "form-control", id = "worker" })
+        </li>
+        <li class="list-group-item">
+
+
+            @Html.DropDownListFor(model => Model.fifth, new SelectList(Model.wrokers, "name", "surname"), htmlAttributes: new { @class = "form-control", id = "worker" })
+        </li>
+        <li class="list-group-item">
+
+
+            @Html.DropDownListFor(model => Model.six, new SelectList(Model.wrokers, "name", "surname"), htmlAttributes: new { @class = "form-control", id = "worker" })
+        </li>*@
+    <input type="submit" value="Submit" class="btn btn-block btn-primary" />
+}
+
+
+
+
 
