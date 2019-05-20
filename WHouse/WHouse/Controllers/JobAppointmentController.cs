@@ -21,16 +21,22 @@ namespace WHouse.Controllers
 
         public ActionResult StartJob(int id)
         {
-            List<Userr> Workers = SelectFreeWorkers();
-            return View(Workers);
-        }
-        public List<Userr> SelectFreeWorkers()
-        {
-            string query = "SELECT * FROM userr WHERE userType ='3' and isBusy='2' ";
-            //List<Userr> list = db.Userrs.ToList();
-            // List<Warehouse> Frees = db.Userrs.SqlQuery(query).ToList();
-              List<Userr> list = db.Userrs.Where(a => a.userType == 3 && a.isBusy == 2 ).ToList();
-            return list;
+            Userr us = new Userr();
+            OrderProduct op = new OrderProduct();
+            Job jbs = new Job();
+
+
+            List<Userr> Workers = us.SelectFreeWorker();
+            List<OrderProduct> products = op.SelectProductsByOrder(id);
+            List<Job> jobs = jbs.SelectJobList();
+
+            Merged merged = new Merged();
+            merged.wrokers = Workers;
+            merged.works = jobs;
+
+
+
+            return View("JobApointment",merged);
         }
 
     }

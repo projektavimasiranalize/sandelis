@@ -11,9 +11,18 @@ namespace WHouse.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Net;
+    using System.Web;
+    using System.Web.Mvc;
+    using WHouse.Models;
+
     public partial class Userr
     {
+
+        private MydataEntities1 db = new MydataEntities1();
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Userr()
@@ -41,5 +50,13 @@ namespace WHouse.Models
         public virtual ICollection<WarehouseAddition> WarehouseAdditions { get; set; }
 
 
+
+        public List<Userr> SelectFreeWorker()
+        {
+            List<Userr> list = db.Userrs.Where(a => a.userType == 3 && a.isBusy == 2).ToList();
+            return list;
+
+
+        }
     }
 }

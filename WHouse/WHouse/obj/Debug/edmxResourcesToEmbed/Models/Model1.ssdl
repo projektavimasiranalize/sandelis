@@ -66,6 +66,7 @@
       <PropertyRef Name="id_OrderProduct" />
     </Key>
     <Property Name="amount" Type="int" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
     <Property Name="id_OrderProduct" Type="int" Nullable="false" />
     <Property Name="fk_CustumerOrderorderNumer" Type="int" Nullable="false" />
     <Property Name="fk_Inventoryproduct_numer" Type="int" Nullable="false" />
@@ -250,7 +251,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__OrderProd__fk_Cu__47DBAE45">
+  <Association Name="FK__OrderProd__fk_Cu__6FE99F9F">
     <End Role="CustumerOrder" Type="Self.CustumerOrder" Multiplicity="1" />
     <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
     <ReferentialConstraint>
@@ -262,7 +263,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__OrderProd__fk_In__48CFD27E">
+  <Association Name="FK__OrderProd__fk_In__70DDC3D8">
     <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
     <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
     <ReferentialConstraint>
@@ -435,11 +436,11 @@
       <End Role="Status" EntitySet="Status" />
       <End Role="OrderJob" EntitySet="OrderJob" />
     </AssociationSet>
-    <AssociationSet Name="FK__OrderProd__fk_Cu__47DBAE45" Association="Self.FK__OrderProd__fk_Cu__47DBAE45">
+    <AssociationSet Name="FK__OrderProd__fk_Cu__6FE99F9F" Association="Self.FK__OrderProd__fk_Cu__6FE99F9F">
       <End Role="CustumerOrder" EntitySet="CustumerOrder" />
       <End Role="OrderProduct" EntitySet="OrderProduct" />
     </AssociationSet>
-    <AssociationSet Name="FK__OrderProd__fk_In__48CFD27E" Association="Self.FK__OrderProd__fk_In__48CFD27E">
+    <AssociationSet Name="FK__OrderProd__fk_In__70DDC3D8" Association="Self.FK__OrderProd__fk_In__70DDC3D8">
       <End Role="Inventory" EntitySet="Inventory" />
       <End Role="OrderProduct" EntitySet="OrderProduct" />
     </AssociationSet>

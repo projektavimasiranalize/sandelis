@@ -173,6 +173,7 @@
     <Compile Include="Models\JobWorker.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Merged.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -299,7 +300,7 @@
     <Content Include="Views\Userrs\Edit.cshtml" />
     <Content Include="Views\Userrs\Index.cshtml" />
     <Content Include="Views\JobAppointment\Index.cshtml" />
-    <Content Include="Views\JobAppointment\StartJob.cshtml" />
+    <Content Include="Views\JobAppointment\JobApointment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

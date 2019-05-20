@@ -11,9 +11,17 @@ namespace WHouse.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Net;
+    using System.Web;
+    using System.Web.Mvc;
+    using WHouse.Models;
+
     public partial class Job
     {
+        private MydataEntities1 db = new MydataEntities1();
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Job()
         {
@@ -25,5 +33,13 @@ namespace WHouse.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderJob> OrderJobs { get; set; }
+
+        public List<Job> SelectJobList()
+        {
+            List<Job> Jobs = db.Jobs.ToList();
+            return Jobs;
+        }
+
+
     }
 }

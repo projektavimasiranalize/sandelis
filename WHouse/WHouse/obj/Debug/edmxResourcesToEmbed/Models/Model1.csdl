@@ -91,6 +91,7 @@
     <Property Name="fk_Inventoryproduct_numer" Type="Int32" Nullable="false" />
     <NavigationProperty Name="CustumerOrder" Relationship="Self.FK__OrderProd__fk_Cu__47DBAE45" FromRole="OrderProduct" ToRole="CustumerOrder" />
     <NavigationProperty Name="Inventory" Relationship="Self.FK__OrderProd__fk_In__48CFD27E" FromRole="OrderProduct" ToRole="Inventory" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Product">
     <Key>

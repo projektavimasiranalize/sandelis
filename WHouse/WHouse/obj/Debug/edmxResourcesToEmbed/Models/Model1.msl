@@ -72,6 +72,7 @@
     <EntitySetMapping Name="OrderProducts">
       <EntityTypeMapping TypeName="MydataModel.OrderProduct">
         <MappingFragment StoreEntitySet="OrderProduct">
+          <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="amount" ColumnName="amount" />
           <ScalarProperty Name="id_OrderProduct" ColumnName="id_OrderProduct" />
           <ScalarProperty Name="fk_CustumerOrderorderNumer" ColumnName="fk_CustumerOrderorderNumer" />

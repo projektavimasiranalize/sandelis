@@ -1,0 +1,75 @@
+﻿@model  WHouse.Models.Merged
+
+@{
+                /**/
+
+                ViewBag.Title = "JobApointment";
+}
+
+
+
+
+
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<div class="container" style="width:40%;margin-top:2%">
+
+    @using (Html.BeginForm("AppointJobsAndWorkers", "JobAppointment", FormMethod.Post))
+    {
+
+        @foreach (var name in @Model.works)
+        {
+
+            <li class="list-group-item">@name.name </li>
+            @Html.TextBoxFor(model => model, new { @class = "form-control", @placeholder = "capacity" })
+
+        }
+
+
+        @Html.TextBoxFor(model => model.adress, new { @class = "form-control", @placeholder = "adress" })
+        @Html.TextBoxFor(model => model.id_Warehouse, new { @class = "form-control", @placeholder = "id_Warehouse" })
+        <input type="submit" value="Submit" class="btn btn-block btn-primary" />
+    }
+
+</div>*@
+
+
+
+
+
+<div class="panel panel-body" style="min-height:256px">
+
+    <div class="col-md-9">
+        <h4>fun ble</h4>
+        @if (Model != null)
+        {
+            <div class="col-md-6">
+
+                <ul class="list-group">
+                    @foreach (var name in @Model.works)
+                    {
+
+                        <li class="list-group-item">@name.name </li>
+
+                    }
+
+                </ul>
+
+            </div>
+            <div class="col-md-6">
+
+                <ul class="list-group">
+                    @foreach (var workers in @Model.wrokers)
+                    {
+
+                        <li class="list-group-item">@workers.name </li>
+
+                    }
+                </ul>
+            </div>
+        }
+
+
+    </div>
+
+</div>
+
