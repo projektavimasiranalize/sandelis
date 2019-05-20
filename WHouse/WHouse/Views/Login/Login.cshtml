@@ -4,11 +4,13 @@
     ViewBag.Title = "Login";
 }
 
+
+
 @using (Html.BeginForm("Login", "Login", FormMethod.Post))
 {
     <fieldset>
-        <legend>Login motherfucker</legend>
-
+        <legend>Login page</legend>
+        
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
         @if (@ViewBag.Message != null)
