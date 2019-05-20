@@ -1,38 +1,46 @@
 ﻿@model  WHouse.Models.Merged
 
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = "JobApointment";
+    ViewBag.Title = "JobApointment";
 }
 
 
 
 
 
-@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-<div class="container" style="width:40%;margin-top:2%">
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 
-    @using (Html.BeginForm("AppointJobsAndWorkers", "JobAppointment", FormMethod.Post))
+@using (Html.BeginForm("AppointJobsAndWorkers", "JobAppointment", FormMethod.Post))
+{
+    foreach (var name in @Model.works)
     {
+        <li class="list-group-item">
+            @name.name
+        <ul class="dropdown-menu" style="padding: 10px" id="myDiv">
+            @foreach (var wrok in @Model.wrokers)
+            {
+                <li><p><input type="checkbox" value="@wrok.ID"> @wrok.name</p></li>
+            }
+        </ul>
+    </li>
 
-        @foreach (var name in @Model.works)
-        {
+}
 
-            <li class="list-group-item">@name.name </li>
-            @Html.TextBoxFor(model => model, new { @class = "form-control", @placeholder = "capacity" })
+<input type="submit" value="Submit" class="btn btn-block btn-primary" />
+}
 
-        }
-
-
-        @Html.TextBoxFor(model => model.adress, new { @class = "form-control", @placeholder = "adress" })
-        @Html.TextBoxFor(model => model.id_Warehouse, new { @class = "form-control", @placeholder = "id_Warehouse" })
-        <input type="submit" value="Submit" class="btn btn-block btn-primary" />
-    }
-
-</div>*@
-
-
+<div>
+    <asp:ListBox ID="lstFruits" runat="server" SelectionMode="Multiple">
+        <asp:ListItem Text="Mango" Value="1" />
+        <asp:ListItem Text="Apple" Value="2" />
+        <asp:ListItem Text="Banana" Value="3" />
+        <asp:ListItem Text="Guava" Value="4" />
+        <asp:ListItem Text="Orange" Value="5" />
+    </asp:ListBox>
+    <asp:Button Text="Submit" runat="server" OnClick="Submit" />
+</div>
 
 
 
