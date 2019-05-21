@@ -11,25 +11,24 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <div class="container">
-<table class="table">
-    @if (Model != null)
-    {
-
-        foreach (var workers in Model.wrokers)
+    <table class="table-striped">
+        @if (Model != null)
         {
             <tr>
-
-            <td class="list-group-item">@workers.name </td>
-            <td class="list-group-item">@workers.surname </td>
-            <td class="list-group-item">@workers.ID </td>
-
-             </tr>
+                <th>Name</th>
+                <th>Surename</th>
+                <th>ID</th>
+            </tr>
+            foreach (var workers in Model.wrokers)
+            {
+                <tr>
+                    <td>@workers.name</td>
+                    <td>@workers.surname</td>
+                    <td>@workers.ID</td>
+                </tr>
+            }
         }
-    }
-
-
-
-</table>
+    </table>
 </div>
 
 
