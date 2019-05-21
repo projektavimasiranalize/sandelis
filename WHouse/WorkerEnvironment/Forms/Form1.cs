@@ -27,26 +27,49 @@ namespace WorkerEnvironment
 
         private void inputButton_Click(object sender, EventArgs e)
         {
+            LoadingScreenToogle();
             using (MydataEntities1 db = new MydataEntities1())
             {
                 var obj = db.Userrs.Where(a => a.username.Equals(usernameInput.Text) && a.password.Equals(passwordInput.Text)).FirstOrDefault();
                 if (obj != null)
                 {
+                    LoadingScreenToogle();
                     if (obj.userType != 3)
-                        MessageBox.Show("You must be a worker to log in");
+                        MessageBox.Show("Turite būti sandėlio darbuotojas, kad galėtumėte prisijungti.","Klaida");
                     else
                     {
                         BaseForm form = new BaseForm(obj.ID);
-                        this.Hide();
                         form.Show();
+                        Hide();
                     }
                 }
                 else
-                    MessageBox.Show("You have entered wrong username or password");
+                {
+                    LoadingScreenToogle();
+
+                    MessageBox.Show("Įvedėte neteisingą prisijungimo vardą arba slaptažodį.","Klaida");
+                    usernameInput.Text = "";
+                    passwordInput.Text = "";
+                }
             }
         }
 
+        private void LoadingScreenToogle()
+        {
+            loadingScreen.Visible = !loadingScreen.Visible;
+        }
+
         private void Form1_Load(object sender, EventArgs e)
+        {
+            loadingScreen.Visible = false;
+        }
+
+        private void passwordInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void usernameInput_TextChanged(object sender, EventArgs e)
         {
 
         }
