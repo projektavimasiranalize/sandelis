@@ -15,54 +15,57 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderConfirm.name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status1.name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Userr.name)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderConfirm.name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status1.name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Userr.name)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.orderNumer }) |
-                @Html.ActionLink("Details", "Details", new { id = item.orderNumer }) |
-                @Html.ActionLink(
-            linkText: "Start Job",
-            actionName: "StartJob",
-            controllerName: "JobAppointment",
-            routeValues: new { id = item.orderNumer },
-            htmlAttributes: null)|
-                @Html.ActionLink("Delete", "Delete", new { id = item.orderNumer })
-            </td>
-        </tr>
-    }
-    
-    </table>
+    <div class="container">
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderConfirm.name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status1.name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Userr.name)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderConfirm.name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status1.name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Userr.name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.orderNumer }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.orderNumer }) |
+                        @Html.ActionLink(
+                            linkText: "Start Job",
+                            actionName: "StartJob",
+                            controllerName: "JobAppointment",
+                            routeValues: new {id = item.orderNumer},
+                            htmlAttributes: null)|
+                        @Html.ActionLink("Delete", "Delete", new { id = item.orderNumer })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
 </body>
 </html>

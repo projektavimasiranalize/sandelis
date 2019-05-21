@@ -15,21 +15,23 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderConfirm.name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Userr.name)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
+<div class="container">
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderConfirm.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Userr.name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.OrderConfirm.name)
@@ -38,13 +40,14 @@
                 @Html.DisplayFor(modelItem => item.Userr.name)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.additionNumer }) |
-                @Html.ActionLink("Details", "Details", new { id=item.additionNumer }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.additionNumer })
+                @Html.ActionLink("Edit", "Edit", new {id = item.additionNumer}) |
+                @Html.ActionLink("Details", "Details", new {id = item.additionNumer}) |
+                @Html.ActionLink("Delete", "Delete", new {id = item.additionNumer})
             </td>
         </tr>
     }
-    
-    </table>
+
+</table>
+</div>
 </body>
 </html>

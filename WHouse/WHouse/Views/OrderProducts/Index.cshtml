@@ -15,42 +15,45 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.amount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CustumerOrder.orderNumer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Inventory.productName)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.amount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CustumerOrder.orderNumer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Inventory.productName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.id_OrderProduct }) |
-                @Html.ActionLink("Details", "Details", new { id=item.id_OrderProduct }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.id_OrderProduct })
-            </td>
-        </tr>
-    }
-    
-    </table>
+    <div class="container">
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CustumerOrder.orderNumer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Inventory.productName)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CustumerOrder.orderNumer)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Inventory.productName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id_OrderProduct }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.id_OrderProduct }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id_OrderProduct })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
 </body>
 </html>

@@ -15,31 +15,31 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div>
+    <div class="container">
         <h4>Warehouse</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.capacity)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.capacity)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.adress)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.adress)
             </dd>
-    
+
         </dl>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.id_Warehouse }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.id_Warehouse }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
 </body>
 </html>

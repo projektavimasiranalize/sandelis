@@ -28,7 +28,7 @@
     {
         @Html.AntiForgeryToken()
         
-        <div class="form-horizontal">
+        <div class="container">
             <h4>JobWorker</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -72,7 +72,7 @@
         </div>
     }
     
-    <div>
+    <div class="container">
         @Html.ActionLink("Back to List", "Index")
     </div>
 </body>

@@ -15,42 +15,45 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.adress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Warehouse.adress)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.adress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Warehouse.adress)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.id_Room }) |
-                @Html.ActionLink("Details", "Details", new { id=item.id_Room }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.id_Room })
-            </td>
-        </tr>
-    }
-    
-    </table>
+    <div class="container">
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.adress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Warehouse.adress)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.adress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Warehouse.adress)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id_Room }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.id_Room }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id_Room })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
 </body>
 </html>

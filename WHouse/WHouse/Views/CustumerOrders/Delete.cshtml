@@ -15,53 +15,54 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <h3>Are you sure you want to delete this?</h3>
-    <div>
-        <h4>CustumerOrder</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.date)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.date)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.OrderConfirm.name)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.OrderConfirm.name)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Status1.name)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Status1.name)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Userr.name)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Userr.name)
-            </dd>
-    
-        </dl>
-    
-        @using (Html.BeginForm()) {
-            @Html.AntiForgeryToken()
-    
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Index")
-            </div>
-        }
-    </div>
+<div class="container">
+<h3>Are you sure you want to delete this?</h3>
+    <h4>CustumerOrder</h4>
+    <hr/>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderConfirm.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderConfirm.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status1.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status1.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Userr.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Userr.name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default"/> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
 </body>
 </html>

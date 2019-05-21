@@ -15,7 +15,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div>
+    <div class="container">
         <h4>CustumerOrder</h4>
         <hr />
         <dl class="dl-horizontal">
@@ -52,10 +52,10 @@
             </dd>
     
         </dl>
-    </div>
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.orderNumer }) |
         @Html.ActionLink("Back to List", "Index")
     </p>
+    </div>
 </body>
 </html>
