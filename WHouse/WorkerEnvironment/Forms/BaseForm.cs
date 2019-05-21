@@ -7,6 +7,7 @@ using System.Data.Entity.Migrations;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -48,6 +49,7 @@ namespace WorkerEnvironment.Forms
             clockTimer.Start();
 
             timeLabel.Text = DateTime.Now.ToString("hh:mm");
+            taskLabel.Visible = false;
 
             LoadCurrentJob();
         }
@@ -89,6 +91,8 @@ namespace WorkerEnvironment.Forms
                 }
                 else
                 {
+                    playSimpleSound();
+
                     ToogleJobInfo(true);
                     taskPlaceLabel.Text = "Sandėlys " + currentJob.place;
 
@@ -125,6 +129,8 @@ namespace WorkerEnvironment.Forms
         private void UpdateTotalJobTime(Object myObject,
             EventArgs myEventArgs)
         {
+            taskLabel.Visible = true;
+
             DateTime jobStartTime = DateTime.Parse(currentJob.start.ToString());
 
             diffTicks = (DateTime.Now - jobStartTime).Ticks;
@@ -184,6 +190,12 @@ namespace WorkerEnvironment.Forms
             clockTimer.Stop();
             activeJobTimer.Stop();
             jobTotalTimer.Stop();
+        }
+
+        private void playSimpleSound()
+        {
+            SoundPlayer simpleSound = new SoundPlayer(@"c:\Windows\Media\chimes.wav");
+            simpleSound.Play();
         }
     }
 }
