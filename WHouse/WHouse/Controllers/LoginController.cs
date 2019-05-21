@@ -38,7 +38,7 @@ namespace WHouse.Controllers
                             return RedirectToAction("UserDashBoard");
 
                         if (obj.userType == 2)
-                            return RedirectToAction("AdminDashBoard");
+                            return RedirectToAction("Index", "CustumerOrders", new { area = "Index" });
 
                         if (obj.userType == 3)
                             return RedirectToAction("WorkerDashBoard");
