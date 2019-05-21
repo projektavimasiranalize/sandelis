@@ -15,6 +15,7 @@
     <EntitySetMapping Name="Inventories">
       <EntityTypeMapping TypeName="MydataModel.Inventory">
         <MappingFragment StoreEntitySet="Inventory">
+          <ScalarProperty Name="product_count" ColumnName="product_count" />
           <ScalarProperty Name="product_numer" ColumnName="product_numer" />
           <ScalarProperty Name="productName" ColumnName="productName" />
           <ScalarProperty Name="adress" ColumnName="adress" />

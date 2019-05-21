@@ -21,6 +21,12 @@ namespace WHouse.Controllers
             return View(inventories.ToList());
         }
 
+        public ActionResult MakeAnOrder()
+        {
+            var inventories = db.Inventories.Include(i => i.Rack);
+            return View(inventories.ToList());
+        }
+
         // GET: Inventories/Details/5
         public ActionResult Details(int? id)
         {
@@ -92,6 +98,62 @@ namespace WHouse.Controllers
             }
             ViewBag.fk_Rackid_Rack = new SelectList(db.Racks, "id_Rack", "adress", inventory.fk_Rackid_Rack);
             return View(inventory);
+        }
+
+        public ActionResult Make2(int id)
+        {//, int count
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            //int testas = count;
+
+            Inventory inventory = db.Inventories.Find(id);
+            if (inventory == null)
+            {
+                return HttpNotFound();
+            }
+
+
+            //Naujas produktas, kuris bus priskiriamas uzsakymui.
+            OrderProduct order = new OrderProduct();
+
+            var obj = db.OrderProducts.ToList().Last();
+            int idcount = obj.id_OrderProduct + 1;
+
+                       
+            string LoggedInId = Session["ID"].ToString();
+            int xd = Int32.Parse(LoggedInId);
+            Userr userr = db.Userrs.Find(xd);
+
+            //CustumerOrder custumerOrder1 = db.CustumerOrders.Find(xd);
+            //if (custumerOrder1 == null)
+            //{
+            //    CustumerOrder custumerOrder2 = new CustumerOrder();
+            //    custumerOrder2.fk_UserID = xd;
+
+            //}
+            //else
+            //{
+            //    custumerOrder2 =  custumerOrder1();
+            //}
+
+            
+
+
+            CustumerOrder custumerOrder = db.CustumerOrders.Find(xd);
+
+
+            order.id_OrderProduct = idcount;
+            order.name = inventory.productName;
+            order.fk_Inventoryproduct_numer = id;
+            order.fk_CustumerOrderorderNumer = custumerOrder.orderNumer;
+            custumerOrder.fk_UserID = xd;
+
+            db.OrderProducts.Add(order);
+            db.SaveChanges();
+            return View();
         }
 
         // GET: Inventories/Delete/5

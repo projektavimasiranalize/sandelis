@@ -302,6 +302,9 @@
     <Content Include="Views\JobAppointment\Index.cshtml" />
     <Content Include="Views\JobAppointment\JobApointment.cshtml" />
     <Content Include="Views\JobAppointment\AppointJobsAndWorkers.cshtml" />
+    <Content Include="Views\Inventories\Make2.cshtml" />
+    <Content Include="Views\Inventories\MakeAnOrder.cshtml" />
+    <Content Include="Views\OrderProducts\OrderList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
