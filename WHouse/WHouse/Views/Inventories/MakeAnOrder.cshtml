@@ -35,9 +35,8 @@
         @Html.DisplayFor(modelItem => item.product_count)
     </td>*@
 <td>
-    @*@Html.TextBoxFor(newid = item.product_count)
+    @Html.TextBoxFor(modelItem => item.product_count)
     @Html.ActionLink("Užsisakyti", "Make2", new { id = item.product_numer })
-    <input type="submit" value="Login" />*@
 </td>
 </tr>
 }

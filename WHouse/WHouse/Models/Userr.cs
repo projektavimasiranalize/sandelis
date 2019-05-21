@@ -54,6 +54,7 @@ namespace WHouse.Models
 
         public List<Userr> SelectFreeWorker()
         {
+            //Prieð salyga isBusy yra 2 kas reiðkia kad yra laisvas
             List<Userr> list = db.Userrs.Where(a => a.userType == 3 && a.isBusy == 2).ToList();
             return list;
         }
@@ -61,7 +62,7 @@ namespace WHouse.Models
 
         public int UpdateWorkerStarus(int user)
         {
-
+            // Po salyga jau keièiasi á 1 ir parodoma, pagal enumeratoriø, kad tampa uþimtas.2
             string query="UPDATE Userr SET isBusy = '" + 1 + "' WHERE ID ='" + user + "'";
             SqlConnection connection = new SqlConnection(
                 @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Aurimas\Desktop\sandelis\sandelis\WHouse\WHouse\App_Data\Mydata.mdf;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework");
@@ -70,25 +71,6 @@ namespace WHouse.Models
             sda.SelectCommand.ExecuteNonQuery();
             connection.Close();
 
-
-            ////db.Entry(orderProduct).State = EntityState.Modified;
-            //Userr worrker = db.Userrs.Find(user);
-            ////  db.Entry(userr).State = EntityState.Modified;
-            // Userr emp = new Userr();
-            ////var obj2 = db.JobWorkers.ToList().Last();
-            ////  int idcount = obj2.id_JobWorker + 1;
-            
-            //emp.username = worrker.username;
-            //emp.userType = worrker.userType;
-            //emp.ID = worrker.ID;
-            //emp.name = worrker.name;
-            //emp.surname = worrker.surname;
-            //emp.phone = worrker.phone;
-            //emp.password = worrker.password;
-            //emp.isBusy = 1;
-            //db.Userrs.SqlQuery("Update Userr SET isBusy={0} where ID ={1}",1,user);
-            //db.Entry(worrker).State = EntityState.Modified;
-           // db.SaveChanges();
 
             return 0;
 

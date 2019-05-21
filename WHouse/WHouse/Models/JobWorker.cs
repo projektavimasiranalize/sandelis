@@ -45,10 +45,7 @@ namespace WHouse.Models
                 db.JobWorkers.Add(emp);
                 db.SaveChanges();
                
-            return 0;
-
-
-           
+            return 0; 
         }
     }
 }

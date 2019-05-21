@@ -16,7 +16,7 @@ namespace WorkerEnvironment.Controllers
                            " = '" + IDtoCompare + "'";
 
             SqlConnection connection = new SqlConnection(
-                @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\PROJECTS\Analize\sandelis\WHouse\WHouse\App_Data\Mydata.mdf;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework");
+                @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Aurimas\Desktop\sandelis\sandelis\WHouse\WHouse\App_Data\Mydata.mdf;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework");
             connection.Open();
             SqlDataAdapter sda = new SqlDataAdapter(query, connection);
             sda.SelectCommand.ExecuteNonQuery();
@@ -36,7 +36,7 @@ namespace WorkerEnvironment.Controllers
                 foreach (var item in jobs)
                 {
                     var jobInList =
-                        db.OrderJobs.FirstOrDefault(a => a.status == 1);
+                        db.OrderJobs.FirstOrDefault(a => a.status == 1 && a.id_OrderJob == item.fk_OrderJobid_OrderJob);
 
                     if (jobInList == null) continue;
 

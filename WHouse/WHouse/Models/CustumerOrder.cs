@@ -48,15 +48,21 @@ namespace WHouse.Models
 
         public int UpdateOrderStatus(int id)
         {
-
-            string query = "UPDATE CustumerOrder SET confirm = '" + 3 + "', status ='"+ 4 +"' WHERE ordernumer ='" + id + "'";
-            SqlConnection connection = new SqlConnection(
-                @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Aurimas\Desktop\sandelis\sandelis\WHouse\WHouse\App_Data\Mydata.mdf;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework");
-            connection.Open();
-            SqlDataAdapter sda = new SqlDataAdapter(query, connection);
-            sda.SelectCommand.ExecuteNonQuery();
-            connection.Close();
-
+            //Prieð  OCL naudojant turime turëti executing(kuris þymimas 1)
+            CustumerOrder ord = db.CustumerOrders.Find(id);
+            if (ord.confirm == 1)
+            {
+                string query = "UPDATE CustumerOrder SET confirm = '" + 3 + "', status ='" + 4 + "' WHERE ordernumer ='" + id + "'";
+                // PO turime turëti confirm confirmed (kuris þymimas skaièiuku 3)
+                SqlConnection connection = new SqlConnection(
+                    @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Aurimas\Desktop\sandelis\sandelis\WHouse\WHouse\App_Data\Mydata.mdf;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework");
+                connection.Open();
+                SqlDataAdapter sda = new SqlDataAdapter(query, connection);
+                sda.SelectCommand.ExecuteNonQuery();
+                connection.Close();
+                return 0;
+            }
+            else
             return 0;
         }
 

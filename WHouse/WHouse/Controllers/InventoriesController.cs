@@ -144,7 +144,7 @@ namespace WHouse.Controllers
 
             CustumerOrder custumerOrder = db.CustumerOrders.Find(xd);
 
-
+            order.amount = inventory.product_count;
             order.id_OrderProduct = idcount;
             order.name = inventory.productName;
             order.fk_Inventoryproduct_numer = id;

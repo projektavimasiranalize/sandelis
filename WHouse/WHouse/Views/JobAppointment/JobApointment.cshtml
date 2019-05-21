@@ -11,33 +11,39 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <div class="container">
-        <table class="table table-striped">
-            @if (Model != null)
+    <table class="table table-striped">
+        @if (Model != null)
+        {
+            <tr>
+                <th>Name</th>
+                <th>Surename</th>
+                <th>ID</th>
+            </tr>
+            foreach (var workers in Model.wrokers)
             {
                 <tr>
-                    <th>Name</th>
-                    <th>Surename</th>
-                    <th>ID</th>
+                    <td>@workers.name</td>
+                    <td>@workers.surname</td>
+                    <td>@workers.ID</td>
                 </tr>
-                foreach (var workers in Model.wrokers)
-                {
-                    <tr>
-                        <td>@workers.name</td>
-                        <td>@workers.surname</td>
-                        <td>@workers.ID</td>
-                    </tr>
-                }
             }
-        </table>
-    
+        }
+    </table>
+
 
     @using (Html.BeginForm("AppointJobsAndWorkers", "JobAppointment", FormMethod.Post))
     {
+        @Html.Label("Pakrauti")
         @Html.TextBoxFor(model => model.first, new { @class = "form-control", @placeholder = "Pakrauti", @required = "required" })
+        @Html.Label("Iskrauti")
         @Html.TextBoxFor(model => model.second, new { @class = "form-control", @placeholder = "Iskrauti", @required = "required" })
+        @Html.Label("Nunesti")
         @Html.TextBoxFor(model => model.third, new { @class = "form-control", @placeholder = "Nunesti", @required = "required" })
+        @Html.Label("Nuvesti")
         @Html.TextBoxFor(model => model.fourth, new { @class = "form-control", @placeholder = "Nuvesti", @required = "required" })
+        @Html.Label("Uzkelti")
         @Html.TextBoxFor(model => model.fifth, new { @class = "form-control", @placeholder = "Uzkelti", @required = "required" })
+        @Html.Label("Nukelti")
         @Html.TextBoxFor(model => model.six, new { @class = "form-control", @placeholder = "Nukelti", @required = "required" })
         @Html.HiddenFor(model => model.id);
         @*<li class="list-group-item">
