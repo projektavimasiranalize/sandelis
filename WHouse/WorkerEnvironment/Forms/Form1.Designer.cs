@@ -80,7 +80,6 @@
             this.usernameLabel.TabIndex = 3;
             this.usernameLabel.Text = "Prisijungimo vardas";
             this.usernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.usernameLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // label1
             // 

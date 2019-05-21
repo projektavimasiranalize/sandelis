@@ -50,7 +50,6 @@
             this.timeLabel.TabIndex = 0;
             this.timeLabel.Text = "00:00";
             this.timeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.timeLabel.Click += new System.EventHandler(this.timeLabel_Click);
             // 
             // finishButton
             // 
@@ -86,7 +85,6 @@
             this.taskPlaceLabel.TabIndex = 2;
             this.taskPlaceLabel.Text = "Vieta";
             this.taskPlaceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.taskPlaceLabel.Click += new System.EventHandler(this.taskPlaceLabel_Click);
             // 
             // placeDescLabel
             // 
@@ -146,7 +144,6 @@
             this.jobTitleLabel.TabIndex = 2;
             this.jobTitleLabel.Text = "Aprašymas";
             this.jobTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.jobTitleLabel.Click += new System.EventHandler(this.taskPlaceLabel_Click);
             // 
             // jobTitleDescLabel
             // 
@@ -159,7 +156,6 @@
             this.jobTitleDescLabel.TabIndex = 2;
             this.jobTitleDescLabel.Text = "UŽDUOTIS:";
             this.jobTitleDescLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.jobTitleDescLabel.Click += new System.EventHandler(this.label2_Click);
             // 
             // BaseForm
             // 

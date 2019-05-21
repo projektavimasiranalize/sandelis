@@ -20,11 +20,6 @@ namespace WorkerEnvironment
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void inputButton_Click(object sender, EventArgs e)
         {
             LoadingScreenToogle();
