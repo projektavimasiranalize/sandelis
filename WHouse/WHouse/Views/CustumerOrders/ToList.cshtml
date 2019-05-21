@@ -1,0 +1,65 @@
+﻿@model IEnumerable<WHouse.Models.CustumerOrder>
+@{
+    ViewBag.Title = "ToList";
+}
+
+@{
+    string LoggedInId = Session["ID"].ToString();
+}
+
+@using (Html.BeginForm())
+{
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title></title>
+    </head>
+    <body>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderConfirm.name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status1.name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Userr.name)
+                </th>
+                <th></th>
+            </tr>
+
+
+
+            @foreach (var item in Model)
+            {
+                if (@LoggedInId == item.fk_UserID.ToString())
+                {
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OrderConfirm.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status1.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Userr.name)
+                        </td>
+                    </tr>
+                    //}
+                }
+            }
+
+        </table>
+    </body>
+</html>
+}

@@ -301,6 +301,7 @@
     <Content Include="Views\Userrs\Index.cshtml" />
     <Content Include="Views\JobAppointment\Index.cshtml" />
     <Content Include="Views\JobAppointment\JobApointment.cshtml" />
+    <Content Include="Views\JobAppointment\AppointJobsAndWorkers.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
