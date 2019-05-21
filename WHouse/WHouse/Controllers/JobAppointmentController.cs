@@ -48,7 +48,7 @@ namespace WHouse.Controllers
             Job jbs = new Job();
             OrderJob ordjooobs = new OrderJob();
             List<Job> jobs = jbs.SelectJobList();
-            successor = CO.UpdateOrderStatus(merged.id);
+            
             foreach (var jooob in jobs)
             {
                 var obj = db.OrderJobs.Where(a => a.fk_CustumerOrderorderNumer.Equals(merged.id) && a.fk_JobworkNumer.Equals(jooob.workNumer)).FirstOrDefault();
@@ -65,8 +65,9 @@ namespace WHouse.Controllers
                 k++;
 
             }
-            
-            return View();
+            successor = CO.UpdateOrderStatus(merged.id);
+
+            return RedirectToAction("Index", "CustumerOrders", new { area = "Index" });
         }
     }
 }
