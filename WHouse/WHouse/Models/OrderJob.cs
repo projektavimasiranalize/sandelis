@@ -47,13 +47,16 @@ namespace WHouse.Models
 
         public int InsertOrderJob(int jobid, int orderid)
         {
-            Random rnd = new Random();
+            
             OrderJob emp = new OrderJob();
             
-            emp.id_OrderJob = rnd.Next(10, 100)+ rnd.Next(10, 1000)+rnd.Next(10, 10000)+rnd.Next(10, 10000)+rnd.Next(10, 10000)+rnd.Next(10, 50);
+            //emp.id_OrderJob = rnd.Next(10, 100)+ rnd.Next(10, 1000)+rnd.Next(10, 10000)+rnd.Next(10, 10000)+rnd.Next(10, 10000)+rnd.Next(10, 50);
+            var obj2 = db.OrderJobs.ToList().Last();
             var obj = db.OrderJobs.Where(a => a.id_OrderJob.Equals(emp.id_OrderJob)).FirstOrDefault();
+            int idcount = obj2.id_OrderJob+1;
             if (obj == null)
             {
+                emp.id_OrderJob = idcount + 1;
                 emp.start = DateTime.Now;
                 emp.status = 4;
                 emp.fk_JobworkNumer = jobid;
@@ -67,3 +70,4 @@ namespace WHouse.Models
         }
     }
 }
+

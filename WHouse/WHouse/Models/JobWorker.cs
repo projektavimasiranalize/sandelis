@@ -11,15 +11,44 @@ namespace WHouse.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Data;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Net;
+    using System.Web;
+    using System.Web.Mvc;
+    using WHouse.Models;
+
     public partial class JobWorker
     {
+        private MydataEntities1 db = new MydataEntities1();
         public string posision { get; set; }
         public int id_JobWorker { get; set; }
         public int fk_OrderJobid_OrderJob { get; set; }
         public int fk_UserID { get; set; }
-    
         public virtual Userr Userr { get; set; }
         public virtual OrderJob OrderJob { get; set; }
+
+
+
+
+        public int InsertJobWorker(int OJob, int User)
+        {
+            JobWorker emp = new JobWorker();
+            var obj2 = db.JobWorkers.ToList().Last();
+            int idcount = obj2.id_JobWorker + 1;
+            
+                emp.id_JobWorker = idcount + 1;
+                emp.fk_UserID = User;
+                emp.fk_OrderJobid_OrderJob = OJob;
+                emp.posision = "HAH";
+                db.JobWorkers.Add(emp);
+                db.SaveChanges();
+               
+            return 0;
+
+
+           
+        }
     }
 }
