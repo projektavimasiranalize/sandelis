@@ -56,7 +56,6 @@
             this.usernameInput.Size = new System.Drawing.Size(480, 64);
             this.usernameInput.TabIndex = 1;
             this.usernameInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.usernameInput.TextChanged += new System.EventHandler(this.usernameInput_TextChanged);
             // 
             // passwordInput
             // 
@@ -67,7 +66,6 @@
             this.passwordInput.TabIndex = 2;
             this.passwordInput.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.passwordInput.UseSystemPasswordChar = true;
-            this.passwordInput.TextChanged += new System.EventHandler(this.passwordInput_TextChanged);
             // 
             // usernameLabel
             // 
@@ -80,7 +78,6 @@
             this.usernameLabel.TabIndex = 3;
             this.usernameLabel.Text = "Prisijungimo vardas";
             this.usernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.usernameLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // label1
             // 

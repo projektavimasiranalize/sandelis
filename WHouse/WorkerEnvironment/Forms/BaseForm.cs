@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WHouse.Models;
+using WorkerEnvironment.Controllers;
 
 namespace WorkerEnvironment.Forms
 {
@@ -36,11 +37,6 @@ namespace WorkerEnvironment.Forms
             workerID = ID;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void BaseForm_Load(object sender, EventArgs e)
         {
             clockTimer.Tick += new EventHandler(TimerEvent);
@@ -56,57 +52,36 @@ namespace WorkerEnvironment.Forms
 
         private void LoadCurrentJob()
         {
-            using (MydataEntities1 db = new MydataEntities1())
+            currentJob = JobExecutionController.GetOrderJob(workerID);
+            Job jobDescription = JobExecutionController.GetJobDescription(currentJob);
+
+            if (currentJob == null)
             {
-                var worker = db.Userrs.FirstOrDefault(a => a.ID == workerID);
+                noTasksLabel.Text = "Šiuo metu neturite priskirtų darbų, galite pailsėti :)";
 
-                var jobs = db.JobWorkers.Where(a => a.fk_UserID == worker.ID).ToList();
+                if (timerHasBeenStarted) return;
 
-                currentJob = null;
-                Job jobDescription = null;
+                activeJobTimer.Tick += new EventHandler(CheckForActiveJobs);
+                activeJobTimer.Interval = 1000;
+                activeJobTimer.Start();
 
-                foreach (var item in jobs)
-                {
-                    var jobInList =
-                        db.OrderJobs.FirstOrDefault(a => a.status == 1);
+                ToogleJobInfo(false);
 
-                    if (jobInList == null) continue;
+                timerHasBeenStarted = !timerHasBeenStarted;
+            }
+            else
+            {
+                playSimpleSound();
 
-                    currentJob = jobInList;
-                    break;
-                }
+                ToogleJobInfo(true);
+                taskPlaceLabel.Text = "Sandėlis " + currentJob.place;
+                jobTitleLabel.Text = jobDescription.name;
 
-                if (currentJob != null)
-                    jobDescription = db.Jobs.FirstOrDefault(a => a.workNumer == currentJob.fk_JobworkNumer);
+                jobTotalTimer.Tick += new EventHandler(UpdateTotalJobTime);
+                jobTotalTimer.Interval = 1000;
+                jobTotalTimer.Start();
 
-                if (currentJob == null)
-                {
-                    noTasksLabel.Text = "Šiuo metu neturite priskirtų darbų, galite pailsėti :)";
-
-                    if (timerHasBeenStarted) return;
-
-                    activeJobTimer.Tick += new EventHandler(CheckForActiveJobs);
-                    activeJobTimer.Interval = 1000;
-                    activeJobTimer.Start();
-
-                    ToogleJobInfo(false);
-
-                    timerHasBeenStarted = !timerHasBeenStarted;
-                }
-                else
-                {
-                    playSimpleSound();
-
-                    ToogleJobInfo(true);
-                    taskPlaceLabel.Text = "Sandėlys " + currentJob.place;
-                    jobTitleLabel.Text = jobDescription.name;
-
-                    jobTotalTimer.Tick += new EventHandler(UpdateTotalJobTime);
-                    jobTotalTimer.Interval = 1000;
-                    jobTotalTimer.Start();
-
-                    activeJobTimer.Stop();
-                }
+                activeJobTimer.Stop();
             }
         }
 
@@ -148,19 +123,13 @@ namespace WorkerEnvironment.Forms
         {
             TimeSpan span = new TimeSpan(diffTicks);
 
-            return String.Format("{0:00}:{1:00}:{2:00}", span.Hours + span.Days * 24, span.Minutes % 60,
-                span.Seconds % 3600);
-        }
-
-        private void timeLabel_Click(object sender, EventArgs e)
-        {
-
+            return String.Format("{0:00}:{1:00}:{2:00}", span.Hours+span.Days*24, span.Minutes % 60, span.Seconds % 3600);
         }
 
         private void finishButton_Click(object sender, EventArgs e)
         {
-            UpdateDatabase("UPDATE OrderJob SET status = '" + 2 + "' WHERE id_OrderJob ='" + currentJob.id_OrderJob + "'");
-            UpdateDatabase("UPDATE Userr SET isBusy = '" + 1 + "' WHERE ID ='" + workerID + "'");
+            JobExecutionController.UpdateDatabase("OrderJob","status",2,"id_OrderJob",currentJob.id_OrderJob);
+            JobExecutionController.UpdateDatabase("Userr", "isBusy", 1, "ID", workerID);
 
             activeJobTimer.Stop();
             jobTotalTimer.Stop();
@@ -171,21 +140,6 @@ namespace WorkerEnvironment.Forms
             BaseForm form = new BaseForm(workerID);
             form.Show();
             Close();
-        }
-
-        private void UpdateDatabase(string query)
-        {
-            SqlConnection connection = new SqlConnection(
-                @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\PROJECTS\Analize\sandelis\WHouse\WHouse\App_Data\Mydata.mdf;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework");
-            connection.Open();
-            SqlDataAdapter sda = new SqlDataAdapter(query, connection);
-            sda.SelectCommand.ExecuteNonQuery();
-            connection.Close();
-        }
-
-        private void taskPlaceLabel_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void logoutButton_Click(object sender, EventArgs e)
@@ -204,11 +158,6 @@ namespace WorkerEnvironment.Forms
         {
             SoundPlayer simpleSound = new SoundPlayer(@"c:\Windows\Media\chimes.wav");
             simpleSound.Play();
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

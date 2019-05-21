@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WHouse.Models;
 using WorkerEnvironment.Forms;
@@ -18,11 +11,6 @@ namespace WorkerEnvironment
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void inputButton_Click(object sender, EventArgs e)
@@ -54,7 +42,12 @@ namespace WorkerEnvironment
             }
         }
 
-        private void LoadingScreenToogle()
+        public static void ShowMessage()
+        {
+            MessageBox.Show("Įvedėte neteisingą prisijungimo vardą arba slaptažodį.", "Klaida");
+        }
+
+        public void LoadingScreenToogle()
         {
             loadingScreen.Visible = !loadingScreen.Visible;
         }
@@ -62,16 +55,6 @@ namespace WorkerEnvironment
         private void Form1_Load(object sender, EventArgs e)
         {
             loadingScreen.Visible = false;
-        }
-
-        private void passwordInput_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void usernameInput_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
