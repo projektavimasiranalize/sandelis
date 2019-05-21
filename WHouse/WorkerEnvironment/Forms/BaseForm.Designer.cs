@@ -36,6 +36,8 @@
             this.logoutButton = new System.Windows.Forms.Button();
             this.timeDescLabel = new System.Windows.Forms.Label();
             this.noTasksLabel = new System.Windows.Forms.Label();
+            this.jobTitleLabel = new System.Windows.Forms.Label();
+            this.jobTitleDescLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // timeLabel
@@ -67,7 +69,7 @@
             // 
             this.taskLabel.BackColor = System.Drawing.Color.Transparent;
             this.taskLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.taskLabel.Location = new System.Drawing.Point(32, 293);
+            this.taskLabel.Location = new System.Drawing.Point(32, 404);
             this.taskLabel.Name = "taskLabel";
             this.taskLabel.Size = new System.Drawing.Size(443, 65);
             this.taskLabel.TabIndex = 2;
@@ -78,7 +80,7 @@
             // 
             this.taskPlaceLabel.BackColor = System.Drawing.Color.Transparent;
             this.taskPlaceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.taskPlaceLabel.Location = new System.Drawing.Point(32, 177);
+            this.taskPlaceLabel.Location = new System.Drawing.Point(32, 288);
             this.taskPlaceLabel.Name = "taskPlaceLabel";
             this.taskPlaceLabel.Size = new System.Drawing.Size(443, 67);
             this.taskPlaceLabel.TabIndex = 2;
@@ -91,7 +93,7 @@
             this.placeDescLabel.AutoSize = true;
             this.placeDescLabel.BackColor = System.Drawing.Color.Transparent;
             this.placeDescLabel.Font = new System.Drawing.Font("MS UI Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.placeDescLabel.Location = new System.Drawing.Point(197, 143);
+            this.placeDescLabel.Location = new System.Drawing.Point(197, 254);
             this.placeDescLabel.Name = "placeDescLabel";
             this.placeDescLabel.Size = new System.Drawing.Size(113, 34);
             this.placeDescLabel.TabIndex = 2;
@@ -115,7 +117,7 @@
             this.timeDescLabel.AutoSize = true;
             this.timeDescLabel.BackColor = System.Drawing.Color.Transparent;
             this.timeDescLabel.Font = new System.Drawing.Font("MS UI Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timeDescLabel.Location = new System.Drawing.Point(106, 259);
+            this.timeDescLabel.Location = new System.Drawing.Point(106, 370);
             this.timeDescLabel.Name = "timeDescLabel";
             this.timeDescLabel.Size = new System.Drawing.Size(295, 34);
             this.timeDescLabel.TabIndex = 2;
@@ -134,6 +136,31 @@
             this.noTasksLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.noTasksLabel.Visible = false;
             // 
+            // jobTitleLabel
+            // 
+            this.jobTitleLabel.BackColor = System.Drawing.Color.Transparent;
+            this.jobTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.jobTitleLabel.Location = new System.Drawing.Point(32, 167);
+            this.jobTitleLabel.Name = "jobTitleLabel";
+            this.jobTitleLabel.Size = new System.Drawing.Size(443, 67);
+            this.jobTitleLabel.TabIndex = 2;
+            this.jobTitleLabel.Text = "Aprašymas";
+            this.jobTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.jobTitleLabel.Click += new System.EventHandler(this.taskPlaceLabel_Click);
+            // 
+            // jobTitleDescLabel
+            // 
+            this.jobTitleDescLabel.AutoSize = true;
+            this.jobTitleDescLabel.BackColor = System.Drawing.Color.Transparent;
+            this.jobTitleDescLabel.Font = new System.Drawing.Font("MS UI Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.jobTitleDescLabel.Location = new System.Drawing.Point(164, 133);
+            this.jobTitleDescLabel.Name = "jobTitleDescLabel";
+            this.jobTitleDescLabel.Size = new System.Drawing.Size(179, 34);
+            this.jobTitleDescLabel.TabIndex = 2;
+            this.jobTitleDescLabel.Text = "UŽDUOTIS:";
+            this.jobTitleDescLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.jobTitleDescLabel.Click += new System.EventHandler(this.label2_Click);
+            // 
             // BaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -145,6 +172,8 @@
             this.Controls.Add(this.noTasksLabel);
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.timeDescLabel);
+            this.Controls.Add(this.jobTitleDescLabel);
+            this.Controls.Add(this.jobTitleLabel);
             this.Controls.Add(this.placeDescLabel);
             this.Controls.Add(this.taskPlaceLabel);
             this.Controls.Add(this.taskLabel);
@@ -170,5 +199,7 @@
         private System.Windows.Forms.Button logoutButton;
         private System.Windows.Forms.Label timeDescLabel;
         private System.Windows.Forms.Label noTasksLabel;
+        private System.Windows.Forms.Label jobTitleLabel;
+        private System.Windows.Forms.Label jobTitleDescLabel;
     }
 }

@@ -63,17 +63,21 @@ namespace WorkerEnvironment.Forms
                 var jobs = db.JobWorkers.Where(a => a.fk_UserID == worker.ID).ToList();
 
                 currentJob = null;
+                Job jobDescription = null;
 
                 foreach (var item in jobs)
                 {
                     var jobInList =
-                        db.OrderJobs.FirstOrDefault(a => a.status == 1 && a.fk_JobworkNumer == item.id_JobWorker);
+                        db.OrderJobs.FirstOrDefault(a => a.status == 1);
 
                     if (jobInList == null) continue;
 
                     currentJob = jobInList;
                     break;
                 }
+
+                if (currentJob != null)
+                    jobDescription = db.Jobs.FirstOrDefault(a => a.workNumer == currentJob.fk_JobworkNumer);
 
                 if (currentJob == null)
                 {
@@ -95,6 +99,7 @@ namespace WorkerEnvironment.Forms
 
                     ToogleJobInfo(true);
                     taskPlaceLabel.Text = "Sandėlys " + currentJob.place;
+                    jobTitleLabel.Text = jobDescription.name;
 
                     jobTotalTimer.Tick += new EventHandler(UpdateTotalJobTime);
                     jobTotalTimer.Interval = 1000;
@@ -110,6 +115,8 @@ namespace WorkerEnvironment.Forms
             finishButton.Visible = toogle;
             placeDescLabel.Visible = toogle;
             taskPlaceLabel.Visible = toogle;
+            jobTitleDescLabel.Visible = toogle;
+            jobTitleLabel.Visible = toogle;
 
             noTasksLabel.Visible = !toogle;
         }
@@ -141,7 +148,8 @@ namespace WorkerEnvironment.Forms
         {
             TimeSpan span = new TimeSpan(diffTicks);
 
-            return String.Format("{0:00}:{1:00}:{2:00}", span.Hours, span.Minutes % 60, span.Seconds % 3600);
+            return String.Format("{0:00}:{1:00}:{2:00}", span.Hours + span.Days * 24, span.Minutes % 60,
+                span.Seconds % 3600);
         }
 
         private void timeLabel_Click(object sender, EventArgs e)
@@ -196,6 +204,11 @@ namespace WorkerEnvironment.Forms
         {
             SoundPlayer simpleSound = new SoundPlayer(@"c:\Windows\Media\chimes.wav");
             simpleSound.Play();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
