@@ -9,11 +9,21 @@
 
 namespace WHouse.Models
 {
+    using System.Data.SqlClient;
     using System;
     using System.Collections.Generic;
-    
+    using System.Data;
+    using System.Data.Entity;
+    using System.Linq;
+    using System.Net;
+    using System.Web;
+    using System.Web.Mvc;
+    using WHouse.Models;
+
     public partial class CustumerOrder
     {
+        private MydataEntities1 db = new MydataEntities1();
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CustumerOrder()
         {
@@ -34,5 +44,22 @@ namespace WHouse.Models
         public virtual ICollection<OrderJob> OrderJobs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderProduct> OrderProducts { get; set; }
+
+
+        public int UpdateOrderStatus(int id)
+        {
+
+            string query = "UPDATE CustumerOrder SET confirm = '" + 3 + "', status ='"+ 4 +"' WHERE ordernumer ='" + id + "'";
+            SqlConnection connection = new SqlConnection(
+                @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Aurimas\Desktop\sandelis\sandelis\WHouse\WHouse\App_Data\Mydata.mdf;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework");
+            connection.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(query, connection);
+            sda.SelectCommand.ExecuteNonQuery();
+            connection.Close();
+
+            return 0;
+        }
+
+
     }
 }

@@ -9,6 +9,7 @@
 
 namespace WHouse.Models
 {
+    using System.Data.SqlClient;
     using System;
     using System.Collections.Generic;
     using System.Data;
@@ -55,6 +56,42 @@ namespace WHouse.Models
         {
             List<Userr> list = db.Userrs.Where(a => a.userType == 3 && a.isBusy == 2).ToList();
             return list;
+        }
+
+
+        public int UpdateWorkerStarus(int user)
+        {
+
+            string query="UPDATE Userr SET isBusy = '" + 1 + "' WHERE ID ='" + user + "'";
+            SqlConnection connection = new SqlConnection(
+                @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Aurimas\Desktop\sandelis\sandelis\WHouse\WHouse\App_Data\Mydata.mdf;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework");
+            connection.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(query, connection);
+            sda.SelectCommand.ExecuteNonQuery();
+            connection.Close();
+
+
+            ////db.Entry(orderProduct).State = EntityState.Modified;
+            //Userr worrker = db.Userrs.Find(user);
+            ////  db.Entry(userr).State = EntityState.Modified;
+            // Userr emp = new Userr();
+            ////var obj2 = db.JobWorkers.ToList().Last();
+            ////  int idcount = obj2.id_JobWorker + 1;
+            
+            //emp.username = worrker.username;
+            //emp.userType = worrker.userType;
+            //emp.ID = worrker.ID;
+            //emp.name = worrker.name;
+            //emp.surname = worrker.surname;
+            //emp.phone = worrker.phone;
+            //emp.password = worrker.password;
+            //emp.isBusy = 1;
+            //db.Userrs.SqlQuery("Update Userr SET isBusy={0} where ID ={1}",1,user);
+            //db.Entry(worrker).State = EntityState.Modified;
+           // db.SaveChanges();
+
+            return 0;
+
         }
     }
 }
