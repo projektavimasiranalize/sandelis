@@ -11,12 +11,12 @@ namespace WHouse.Models
         public List<JobWorker> jWorker { get; set; }
         public List<Job> works { get; set; }
         public List<OrderJob> orJobs { get; set; }
-        public string first { get; set; }
-        public string second { get; set; }
-        public string third { get; set; }
-        public string fourth { get; set; }
-        public string fifth { get; set; }
-        public string six { get; set; }
+        public int first { get; set; }
+        public int second { get; set; }
+        public int third { get; set; }
+        public int fourth { get; set; }
+        public int fifth { get; set; }
+        public int six { get; set; }
         public int id { get; set; }
     }
 }

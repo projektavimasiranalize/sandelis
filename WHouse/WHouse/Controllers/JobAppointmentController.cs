@@ -37,22 +37,35 @@ namespace WHouse.Controllers
         [HttpPost]
         public ActionResult AppointJobsAndWorkers(Merged merged)
         {
-            int[] joborderid= new int[50];
+            int joborderid;
             int k = 0;
-            int countall = 0;
+            int siaip;
+            int succes;
+            int successor;
+            CustumerOrder CO = new CustumerOrder();
+            Userr us = new Userr();
+            JobWorker jbWorker = new JobWorker();
             Job jbs = new Job();
             OrderJob ordjooobs = new OrderJob();
             List<Job> jobs = jbs.SelectJobList();
+            successor = CO.UpdateOrderStatus(merged.id);
             foreach (var jooob in jobs)
             {
                 var obj = db.OrderJobs.Where(a => a.fk_CustumerOrderorderNumer.Equals(merged.id) && a.fk_JobworkNumer.Equals(jooob.workNumer)).FirstOrDefault();
                 if (obj == null)
                 {
-                   joborderid[k] = ordjooobs.InsertOrderJob(jooob.workNumer, merged.id);
-                    k++;
+                   joborderid = ordjooobs.InsertOrderJob(jooob.workNumer, merged.id);
+                    if (k == 0) { siaip = jbWorker.InsertJobWorker(joborderid, merged.first); succes = us.UpdateWorkerStarus(merged.first); }
+                    else if  (k==1) { siaip = jbWorker.InsertJobWorker(joborderid, merged.second); succes = us.UpdateWorkerStarus(merged.second); }
+                    else if (k == 2) { siaip = jbWorker.InsertJobWorker(joborderid, merged.third); succes = us.UpdateWorkerStarus(merged.third); }
+                    else if (k == 3) { siaip = jbWorker.InsertJobWorker(joborderid, merged.fourth); succes = us.UpdateWorkerStarus(merged.fourth); }
+                    else if (k == 4) { siaip = jbWorker.InsertJobWorker(joborderid, merged.fifth); succes = us.UpdateWorkerStarus(merged.fifth); }
+                    else if (k == 5) { siaip = jbWorker.InsertJobWorker(joborderid, merged.six); succes = us.UpdateWorkerStarus(merged.six); }
                 }
-                countall++;
+                k++;
+
             }
+            
             return View();
         }
     }
