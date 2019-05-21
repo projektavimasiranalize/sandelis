@@ -11,30 +11,24 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <div class="container">
-    <table class="table-striped">
-        @if (Model != null)
-        {
-            <tr>
-                <th>Name</th>
-                <th>Surename</th>
-                <th>ID</th>
-            </tr>
-            foreach (var workers in Model.wrokers)
+        <table class="table table-striped">
+            @if (Model != null)
             {
                 <tr>
-                    <td>@workers.name</td>
-                    <td>@workers.surname</td>
-                    <td>@workers.ID</td>
+                    <th>Name</th>
+                    <th>Surename</th>
+                    <th>ID</th>
                 </tr>
+                foreach (var workers in Model.wrokers)
+                {
+                    <tr>
+                        <td>@workers.name</td>
+                        <td>@workers.surname</td>
+                        <td>@workers.ID</td>
+                    </tr>
+                }
             }
-        }
-    </table>
-</div>
-
-
- 
-
-
+        </table>
     
 
     @using (Html.BeginForm("AppointJobsAndWorkers", "JobAppointment", FormMethod.Post))
@@ -76,7 +70,7 @@
             </li>*@
         <input type="submit" value="Submit" class="btn btn-block btn-primary" />
     }
-
+</div>
 
 
 
