@@ -1,0 +1,42 @@
+﻿@model IEnumerable<WHouse.Models.Inventory>
+
+@{
+    ViewBag.Title = "MakeAnOrder";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<h2></h2>
+
+<p>
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Produktas
+        </th>
+
+        <th>
+            Įveskite kiekį bei spauskite „Užsakyti“.
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.productName)
+    </td>
+
+    @*<td>
+        @Html.DisplayFor(modelItem => item.product_count)
+    </td>*@
+<td>
+        @Html.ActionLink("Užsisakyti", "Make2", new { id = item.product_numer })
+</td>
+</tr>
+}
+
+</table>

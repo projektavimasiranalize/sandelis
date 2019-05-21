@@ -17,6 +17,7 @@
     <Property Name="product_numer" Type="int" Nullable="false" />
     <Property Name="productName" Type="varchar" MaxLength="255" />
     <Property Name="adress" Type="varchar" MaxLength="255" />
+    <Property Name="product_count" Type="int" />
     <Property Name="fk_Rackid_Rack" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="IsBusy">
@@ -191,7 +192,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Inventory__fk_Ra__412EB0B6">
+  <Association Name="FK__Inventory__fk_Ra__08B54D69">
     <End Role="Rack" Type="Self.Rack" Multiplicity="1" />
     <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
     <ReferentialConstraint>
@@ -263,7 +264,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__OrderProd__fk_In__70DDC3D8">
+  <Association Name="FK__OrderProd__fk_In__0B91BA14">
     <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
     <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
     <ReferentialConstraint>
@@ -275,7 +276,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Product__fk_Inve__4BAC3F29">
+  <Association Name="FK__Product__fk_Inve__09A971A2">
     <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
     <End Role="Product" Type="Self.Product" Multiplicity="*" />
     <ReferentialConstraint>
@@ -287,7 +288,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ProductTo__fk_In__4E88ABD4">
+  <Association Name="FK__ProductTo__fk_In__0A9D95DB">
     <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
     <End Role="ProductToAdd" Type="Self.ProductToAdd" Multiplicity="*" />
     <ReferentialConstraint>
@@ -416,7 +417,7 @@
       <End Role="Status" EntitySet="Status" />
       <End Role="CustumerOrder" EntitySet="CustumerOrder" />
     </AssociationSet>
-    <AssociationSet Name="FK__Inventory__fk_Ra__412EB0B6" Association="Self.FK__Inventory__fk_Ra__412EB0B6">
+    <AssociationSet Name="FK__Inventory__fk_Ra__08B54D69" Association="Self.FK__Inventory__fk_Ra__08B54D69">
       <End Role="Rack" EntitySet="Rack" />
       <End Role="Inventory" EntitySet="Inventory" />
     </AssociationSet>
@@ -440,15 +441,15 @@
       <End Role="CustumerOrder" EntitySet="CustumerOrder" />
       <End Role="OrderProduct" EntitySet="OrderProduct" />
     </AssociationSet>
-    <AssociationSet Name="FK__OrderProd__fk_In__70DDC3D8" Association="Self.FK__OrderProd__fk_In__70DDC3D8">
+    <AssociationSet Name="FK__OrderProd__fk_In__0B91BA14" Association="Self.FK__OrderProd__fk_In__0B91BA14">
       <End Role="Inventory" EntitySet="Inventory" />
       <End Role="OrderProduct" EntitySet="OrderProduct" />
     </AssociationSet>
-    <AssociationSet Name="FK__Product__fk_Inve__4BAC3F29" Association="Self.FK__Product__fk_Inve__4BAC3F29">
+    <AssociationSet Name="FK__Product__fk_Inve__09A971A2" Association="Self.FK__Product__fk_Inve__09A971A2">
       <End Role="Inventory" EntitySet="Inventory" />
       <End Role="Product" EntitySet="Product" />
     </AssociationSet>
-    <AssociationSet Name="FK__ProductTo__fk_In__4E88ABD4" Association="Self.FK__ProductTo__fk_In__4E88ABD4">
+    <AssociationSet Name="FK__ProductTo__fk_In__0A9D95DB" Association="Self.FK__ProductTo__fk_In__0A9D95DB">
       <End Role="Inventory" EntitySet="Inventory" />
       <End Role="ProductToAdd" EntitySet="ProductToAdd" />
     </AssociationSet>

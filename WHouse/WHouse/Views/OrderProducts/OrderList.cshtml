@@ -1,0 +1,53 @@
+﻿@model IEnumerable<WHouse.Models.OrderProduct>
+
+@{
+    Layout = null;
+}
+
+@{
+    string LoggedInId = Session["ID"].ToString();
+}
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+@using (Html.BeginForm())
+{
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Užsakymas</title>
+    </head>
+    <body>
+        <table class="table">
+            <tr>
+                <th>
+                    Kiekis
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CustumerOrder.orderNumer)
+                </th>
+                <th>
+                    Produktas
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                if (@LoggedInId == item.CustumerOrder.fk_UserID.ToString())
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.amount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CustumerOrder.orderNumer)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Inventory.productName)
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </body>
+</html>
+}

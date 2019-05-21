@@ -14,8 +14,15 @@ namespace WHouse.Controllers
     {
         private MydataEntities1 db = new MydataEntities1();
 
+
         // GET: CustumerOrders
         public ActionResult Index()
+        {
+            var custumerOrders = db.CustumerOrders.Include(c => c.OrderConfirm).Include(c => c.Status1).Include(c => c.Userr);
+            return View(custumerOrders.ToList());
+        }
+
+        public ActionResult ToList()
         {
             var custumerOrders = db.CustumerOrders.Include(c => c.OrderConfirm).Include(c => c.Status1).Include(c => c.Userr);
             return View(custumerOrders.ToList());

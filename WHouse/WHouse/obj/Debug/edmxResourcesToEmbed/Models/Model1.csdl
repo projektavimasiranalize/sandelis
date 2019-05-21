@@ -27,6 +27,7 @@
     <NavigationProperty Name="OrderProducts" Relationship="Self.FK__OrderProd__fk_In__48CFD27E" FromRole="Inventory" ToRole="OrderProduct" />
     <NavigationProperty Name="Products" Relationship="Self.FK__Product__fk_Inve__4BAC3F29" FromRole="Inventory" ToRole="Product" />
     <NavigationProperty Name="ProductToAdds" Relationship="Self.FK__ProductTo__fk_In__4E88ABD4" FromRole="Inventory" ToRole="ProductToAdd" />
+    <Property Name="product_count" Type="Int32" />
   </EntityType>
   <EntityType Name="IsBusy">
     <Key>

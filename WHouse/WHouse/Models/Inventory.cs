@@ -26,7 +26,8 @@ namespace WHouse.Models
         public string productName { get; set; }
         public string adress { get; set; }
         public int fk_Rackid_Rack { get; set; }
-    
+        public int product_count { get; set; }
+
         public virtual Rack Rack { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderProduct> OrderProducts { get; set; }

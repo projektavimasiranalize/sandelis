@@ -20,18 +20,14 @@
         <table class="table">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.date)
+                    Užsakymo sukūrimo data
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.OrderConfirm.name)
+                    Užsakytojas
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Status1.name)
+                    Parinktys
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Userr.name)
-                </th>
-                <th></th>
             </tr>
 
 
@@ -41,20 +37,24 @@
                 if (@LoggedInId == item.fk_UserID.ToString())
                 {
 
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.date)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.OrderConfirm.name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Status1.name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Userr.name)
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderProducts)
+                    </td>
+                    @*<td>
+                    @Html.DisplayFor(modelItem => item.OrderConfirm.name)
+                </td>*@
+                    @*<td>
+                    @Html.DisplayFor(modelItem => item.Status1.name)
+                </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Userr.name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Keisti", "Edit", new { id = item.orderNumer })
+                    </td>
+
+        </tr>
                     //}
                 }
             }

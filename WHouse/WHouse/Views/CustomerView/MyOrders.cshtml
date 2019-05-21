@@ -1,0 +1,14 @@
+﻿@model WHouse.Models.CustomerView
+@*@model IEnumerable<WHouse.Models.CustomerView>*@
+@{
+    ViewBag.Title = "MyOrders";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+@foreach (var item in Model)
+{
+    <td>
+        @Html.DisplayFor(modelItem => item)
+    </td>
+}

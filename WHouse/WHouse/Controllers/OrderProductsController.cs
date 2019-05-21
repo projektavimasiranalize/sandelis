@@ -21,6 +21,12 @@ namespace WHouse.Controllers
             return View(orderProducts.ToList());
         }
 
+        public ActionResult OrderList()
+        {
+            var orderProducts = db.OrderProducts.Include(o => o.CustumerOrder).Include(o => o.Inventory);
+            return View(orderProducts.ToList());
+        }
+
         // GET: OrderProducts/Details/5
         public ActionResult Details(int? id)
         {
